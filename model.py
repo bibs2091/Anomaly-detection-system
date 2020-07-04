@@ -38,7 +38,7 @@ class model:
         #return the data as numpy array
         return data.to_numpy()
 
-    def load_data(self,path):
+    def load_data(self,path = 'data_examples/example.csv'):
         #load and preprocess the csv file
         self.data = pd.read_csv(path)
         self.data = preprocess(self.data)
