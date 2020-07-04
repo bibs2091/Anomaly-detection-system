@@ -18,7 +18,7 @@ class model:
             features_file = open("features.txt", "r")
             self.features = []
             for feature in features_file:
-                features.append(feature)
+                self.features.append(feature)
             print("1")
         except:
             # error if features file can't be found in the path
@@ -41,7 +41,7 @@ class model:
     def load_data(self,path = 'data_examples/example.csv'):
         #load and preprocess the csv file
         self.data = pd.read_csv(path)
-        self.data = preprocess(self.data)
+        self.data = self.preprocess(self.data)
 
     def predict(self):
         self.prediction = model.predict(self.data)
