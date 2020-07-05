@@ -34,7 +34,6 @@ Fwd IAT Min
 Bwd IAT Mean
 Idle Max
 Idle Min
-Label
 Pkt Len Mean
 Pkt Len Min
 Bwd Pkt Len Std
