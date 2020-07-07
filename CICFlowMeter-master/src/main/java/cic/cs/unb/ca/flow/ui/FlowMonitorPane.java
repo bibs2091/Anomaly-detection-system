@@ -320,6 +320,9 @@ public  class FlowMonitorPane extends JPanel {
                 break;
             }
         }
+
+        list.setSelectedIndex(2);
+
         String ifName = list.getSelectedValue().name();
         System.out.println(ifName);
 
@@ -404,27 +407,45 @@ public  class FlowMonitorPane extends JPanel {
 
        // System.exit(0);
     }
-
+    private String removeTimeStamp(String flowDump){
+        int i = 0;
+        int comma = 0;
+        while ( (i <= flowDump.length()) && (comma < 6) ){
+            if (flowDump.charAt(i) == ',' ){
+                comma++;
+            }
+            i++;
+        }
+        return flowDump.replace(flowDump.substring(i,i+23),"");
+    }
     private void insertFlow(BasicFlow flow) {
         List<String> flowStringList = new ArrayList<>();
         List<String[]> flowDataList = new ArrayList<>();
         String flowDump = flow.dumpFlowBasedFeaturesEx();
         flowStringList.add(flowDump);
-        System.out.println(flowStringList.get(0));
         flowDataList.add(StringUtils.split(flowDump, ","));
+        Process p;
         try
         {
-            Process p = Runtime.getRuntime().exec("py script.py");
+//            String cmd = "py script.py " + removeTimeStamp(flowDump);
+//            logger.info(cmd,"hhh");
+
+            p = Runtime.getRuntime().exec("py ../model.py " + removeTimeStamp(flowDump));
             String s = null;
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
             while ((s = stdInput.readLine()) != null) {
                 logger.info(s,"hhh");
             }
+            BufferedReader errinput = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+//            while ((s = errinput.readLine()) != null) {
+//                logger.info(s,"hhh");
+//            }
         }
         catch(IOException ioe)
         {
             ioe.printStackTrace();
         }
+
         //write flows to csv file
         String header  = FlowFeature.getHeader();
         String path = FlowMgr.getInstance().getSavePath();
