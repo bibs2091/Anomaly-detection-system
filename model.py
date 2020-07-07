@@ -40,7 +40,7 @@ class model:
         #return the data as numpy array
         return data.to_numpy()
 
-    def load_data(self,path = 'data_examples/example.csv'):
+    def load_data_csv(self,path = 'data_examples/example.csv'):
         #load and preprocess the csv file
         self.data = pd.read_csv(path)
         #for evaluation tasks, we will save the label
@@ -50,6 +50,12 @@ class model:
             self.label = None
             logging.info('This data is labeled')
 
+        self.data = self.preprocess(self.data)
+
+    def load_data(self, rows):
+        #Load and preprocess strings in csv format 
+        columns = open("all_features.txt", "r").readline().split(',')
+        self.data =pd.DataFrame([x.split(',') for x in rows.split('\n')],columns = columns)
         self.data = self.preprocess(self.data)
 
     def predict(self):
@@ -69,6 +75,5 @@ class model:
 
 
 m = model()
-m.load_data()
+m.load_data(sys.argv[1])
 print(m.predict())
-print(m.accuracy())
