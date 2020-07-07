@@ -26,7 +26,10 @@ import javax.swing.text.Position;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.InetAddress;
+import java.io.IOException;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.sql.Timestamp;
@@ -409,7 +412,19 @@ public  class FlowMonitorPane extends JPanel {
         flowStringList.add(flowDump);
         System.out.println(flowStringList.get(0));
         flowDataList.add(StringUtils.split(flowDump, ","));
-
+        try
+        {
+            Process p = Runtime.getRuntime().exec("py script.py");
+            String s = null;
+            BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            while ((s = stdInput.readLine()) != null) {
+                logger.info(s,"hhh");
+            }
+        }
+        catch(IOException ioe)
+        {
+            ioe.printStackTrace();
+        }
         //write flows to csv file
         String header  = FlowFeature.getHeader();
         String path = FlowMgr.getInstance().getSavePath();
