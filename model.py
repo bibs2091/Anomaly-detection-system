@@ -65,6 +65,7 @@ class model:
         return self.prediction
 
     def accuracy(self):
+        #calculate accuracy in case of label availaiblity
         if (self.label is None):
             logging.error("Score can't be calculated, No label provided")
             logging.error("be sure to name your label column with 'Lebel'")
@@ -75,5 +76,5 @@ class model:
             return accuracy
 
 m = model()
-m.load_data()
+m.load_data(sys.argv[1])
 print(m.predict())

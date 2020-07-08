@@ -10,3 +10,7 @@ CICFlowMeter-master/data/*
 #log data
 CICFlowMeter-master/logs
 
+#gradle files
+CICFlowMeter-master/.gradle/
+CICFlowMeter-master/.gradle/*
+CICFlowMeter-master/.gradle/4.2/fileContent/fileContent.lock
