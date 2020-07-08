@@ -18,7 +18,8 @@ import cic.cs.unb.ca.jnetpcap.worker.InsertCsvRow;
 import swing.common.InsertTableRow;
 import swing.common.JTable2CSVWorker;
 import swing.common.TextFileFilter;
-
+import java.net.*;
+import java.util.Enumeration;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -308,7 +309,28 @@ public  class FlowMonitorPane extends JPanel {
         task.execute();
 
     }
-
+    public void netInterfaceRetrieve() throws SocketException, UnknownHostException {
+        final Enumeration<NetworkInterface> netifs = NetworkInterface.getNetworkInterfaces();
+        String ip;
+        //InetAddress myAddr = InetAddress.getLocalHost();
+        try(final DatagramSocket socket = new DatagramSocket()){
+            socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
+             ip = socket.getLocalAddress().getHostAddress();
+            System.out.println(ip);
+        }
+        InetAddress myAddr = InetAddress.getByName(ip);
+        while (netifs.hasMoreElements()) {
+            NetworkInterface networkInterface = netifs.nextElement();
+            Enumeration<InetAddress> inAddrs = networkInterface.getInetAddresses();
+            while (inAddrs.hasMoreElements()) {
+                InetAddress inAddr = inAddrs.nextElement();
+                if (inAddr.equals(myAddr)) {
+                    logger.info(networkInterface.getName(),"hhh");
+                    logger.info(networkInterface.getDisplayName(),"hhh");
+                }
+            }
+        }
+    }
     private void startTrafficFlow() {
         list = new JList<>(listModel);
        Object o=null;
@@ -320,7 +342,7 @@ public  class FlowMonitorPane extends JPanel {
 //                break;
 //            }
         }
-
+        netInterfaceRetrieve();
         list.setSelectedIndex(2);
 
         String ifName = list.getSelectedValue().name();
@@ -463,4 +485,5 @@ public  class FlowMonitorPane extends JPanel {
             }
         }
     }
+    
 }
