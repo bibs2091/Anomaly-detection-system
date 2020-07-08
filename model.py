@@ -5,14 +5,15 @@ import sklearn
 from joblib import load
 import sys
 import warnings
-# if not sys.warnoptions:
-#     warnings.simplefilter("ignore")
+import os
+if not sys.warnoptions:
+    warnings.simplefilter("ignore")
 
 class model:
     def __init__(self):
         # load the pretrained model 
         try:
-            self.model = load('decision_tree_model.joblib')
+            self.model = load('../decision_tree_model.joblib')
         except:
              # error if model can't be found in the path
              logging.error("Model can\'t be found in the main directory")
@@ -20,7 +21,7 @@ class model:
 
         # load the features for the preprocessing step
         try:
-            features_file = open("features.txt", "r")
+            features_file = open("../features.txt", "r")
             self.features = []
             for feature in features_file:
                 self.features.append(feature.strip())
@@ -40,7 +41,7 @@ class model:
         #return the data as numpy array
         return data.to_numpy()
 
-    def load_data_csv(self,path = 'data_examples/example.csv'):
+    def load_data_csv(self,path = '../data_examples/example.csv'):
         #load and preprocess the csv file
         self.data = pd.read_csv(path)
         #for evaluation tasks, we will save the label
@@ -52,9 +53,9 @@ class model:
 
         self.data = self.preprocess(self.data)
 
-    def load_data(self, rows):
+    def load_data(self, rows = "192.168.1.3-140.82.118.4-65394-443-6,192.168.1.3,65394,140.82.118.4,443,6,678,4,1,24.0,24.0,24.0,0.0,6.0,12.0,24.0,24.0,24.0,0.0,70796.46017699115,7374.6312684365785,169.5,151.22720213859233,385.0,50.0,678.0,226.0,185.47506570965274,435.0,81.0,0,0,0,0,0,0,0,0,0,80,20,5899.705014749263,1474.9262536873157,0.0,24.0,8.0,12.393546707863734,153.6,1,0,0,2,5,0,0,0,0.0,9.6,6.0,24.0,0,0,0,0,0,0,0,4,0,4,68,70,1,20,0,0,0,0,1.5940385198503995E15,351.4320702497141,1.594038519850648E15,1.594038519850151E15,NeedManualLabel") :
         #Load and preprocess strings in csv format 
-        columns = open("all_features.txt", "r").readline().split(',')
+        columns = open("../all_features.txt", "r").readline().split(',')
         self.data =pd.DataFrame([x.split(',') for x in rows.split('\n')],columns = columns)
         self.data = self.preprocess(self.data)
 
@@ -73,7 +74,6 @@ class model:
             accuracy = accuracy_score(self.label, self.prediction)
             return accuracy
 
-
 m = model()
-m.load_data(sys.argv[1])
+m.load_data()
 print(m.predict())

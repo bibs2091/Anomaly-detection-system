@@ -315,10 +315,10 @@ public  class FlowMonitorPane extends JPanel {
         for(int i = 0; i< list.getModel().getSize();i++) {
             System.out.println(list.getModel().getElementAt(i));
             o=list.getModel().getElementAt(i);
-            if(o.toString().contains("any") || o.toString().contains("Microsoft")) {
-                list.setSelectedIndex(i);
-                break;
-            }
+//            if(o.toString().contains("any") || o.toString().contains("Microsoft")) {
+//                list.setSelectedIndex(i);
+//                break;
+//            }
         }
 
         list.setSelectedIndex(2);
@@ -437,9 +437,9 @@ public  class FlowMonitorPane extends JPanel {
                 logger.info(s,"hhh");
             }
             BufferedReader errinput = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-//            while ((s = errinput.readLine()) != null) {
-//                logger.info(s,"hhh");
-//            }
+            while ((s = errinput.readLine()) != null) {
+                logger.info(s,"hhh");
+            }
         }
         catch(IOException ioe)
         {

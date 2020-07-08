@@ -1,5 +1,3 @@
-Unnamed: 0
-Unnamed: 0.1
 Flow IAT Mean
 Tot Bwd Pkts
 Fwd Header Len

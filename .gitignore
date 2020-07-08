@@ -1,0 +1,12 @@
+# IDEs and Text editors
+.vscode
+
+# mac os files
+.DS_Store
+
+#captured data
+CICFlowMeter-master/data/*
+
+#log data
+CICFlowMeter-master/logs
+
