@@ -48,8 +48,12 @@ public class MainFrame extends JFrame{
 		initMenu();
 		
 		offLinePane = new FlowOfflinePane();
-        monitorPane = new FlowMonitorPane();
-        visualPane = new FlowVisualPane();
+        try{
+			monitorPane = new FlowMonitorPane();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		visualPane = new FlowVisualPane();
         getContentPane().add(monitorPane,BorderLayout.CENTER);
 
         GuavaMgr.getInstance().getEventBus().register(this);

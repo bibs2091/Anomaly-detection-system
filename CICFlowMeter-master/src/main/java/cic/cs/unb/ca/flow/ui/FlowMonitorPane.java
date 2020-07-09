@@ -71,7 +71,7 @@ public  class FlowMonitorPane extends JPanel {
     private TimerTask task;
 
 
-    public FlowMonitorPane() {
+    public FlowMonitorPane() throws SocketException, UnknownHostException{
         init();
 
         setLayout(new BorderLayout(5, 5));
@@ -89,7 +89,7 @@ public  class FlowMonitorPane extends JPanel {
         csvWriterThread.shutdown();
     }
 
-    private JPanel initCenterPane(){
+    private JPanel initCenterPane() throws SocketException, UnknownHostException{
         JPanel pane = new JPanel();
         pane.setLayout(new BorderLayout(0, 0));
         pane.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
@@ -103,7 +103,7 @@ public  class FlowMonitorPane extends JPanel {
         return pane;
     }
 
-    private JPanel initFlowPane() {
+    private JPanel initFlowPane() throws SocketException, UnknownHostException{
         JPanel pane = new JPanel();
         pane.setLayout(new BorderLayout(0, 5));
         pane.setBorder(BorderFactory.createLineBorder(new Color(0x555555)));
@@ -115,7 +115,7 @@ public  class FlowMonitorPane extends JPanel {
         return pane;
     }
 
-    private JPanel initTablePane() {
+    private JPanel initTablePane() throws SocketException, UnknownHostException{
         JPanel pane = new JPanel();
         pane.setLayout(new BorderLayout(0, 0));
         pane.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
@@ -134,7 +134,7 @@ public  class FlowMonitorPane extends JPanel {
         return pane;
     }
 
-    private JPanel initTableBtnPane(){
+    private JPanel initTableBtnPane() throws SocketException, UnknownHostException{
         JPanel btnPane = new JPanel();
         btnPane.setLayout(new BoxLayout(btnPane, BoxLayout.X_AXIS));
         btnSave = new JButton("Save as");
@@ -195,7 +195,7 @@ public  class FlowMonitorPane extends JPanel {
         return btnPane;
     }
 
-    private JPanel initStatusPane() {
+    private JPanel initStatusPane() throws SocketException, UnknownHostException{
         JPanel pane = new JPanel();
         pane.setLayout(new BoxLayout(pane, BoxLayout.X_AXIS));
         lblStatus = new JLabel("Get ready");
@@ -211,7 +211,7 @@ public  class FlowMonitorPane extends JPanel {
         return pane;
     }
 
-    private JPanel initNWifsPane() {
+    private JPanel initNWifsPane() throws SocketException, UnknownHostException {
         JPanel pane = new JPanel(new BorderLayout(0, 0));
         pane.setBorder(BorderFactory.createLineBorder(new Color(0x555555)));
         pane.add(initNWifsButtonPane(), BorderLayout.WEST);
@@ -220,7 +220,7 @@ public  class FlowMonitorPane extends JPanel {
         return pane;
     }
 
-    private JPanel initNWifsButtonPane() {
+    private JPanel initNWifsButtonPane()   {
         JPanel pane = new JPanel();
         pane.setBorder(BorderFactory.createEmptyBorder(10,15,10,15));
         pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
@@ -235,8 +235,17 @@ public  class FlowMonitorPane extends JPanel {
         btnStart.setMinimumSize(d);
         btnStart.setMaximumSize(d);
         btnStart.setEnabled(false);
-        btnStart.addActionListener(actionEvent -> startTrafficFlow());
-
+        btnStart.addActionListener(actionEvent -> {
+            try {
+                startTrafficFlow();
+            }catch (SocketException e){
+                e.printStackTrace();
+            }catch (UnknownHostException e){
+                e.printStackTrace();
+            }
+        });
+            
+        
         btnStop = new JToggleButton("Stop");
         btnStop.setMinimumSize(d);
         btnStop.setMaximumSize(d);
@@ -331,7 +340,7 @@ public  class FlowMonitorPane extends JPanel {
             }
         }
     }
-    private void startTrafficFlow() {
+    private void startTrafficFlow() throws SocketException,UnknownHostException {
         list = new JList<>(listModel);
        Object o=null;
         for(int i = 0; i< list.getModel().getSize();i++) {
@@ -342,9 +351,14 @@ public  class FlowMonitorPane extends JPanel {
 //                break;
 //            }
         }
-        netInterfaceRetrieve();
-        list.setSelectedIndex(2);
 
+        try{
+            netInterfaceRetrieve();
+        }catch (SocketException e){
+            e.printStackTrace();
+        }
+        
+        list.setSelectedIndex(2);
         String ifName = list.getSelectedValue().name();
         System.out.println(ifName);
 
