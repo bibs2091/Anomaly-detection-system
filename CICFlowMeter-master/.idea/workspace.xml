@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75fbffb7-3da9-41c2-884a-3219bb750a64" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/CICFlowMeter-master.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.2/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/fileHashes/fileHashes.lock" afterDir="false" />
@@ -12,12 +9,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.2/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.2/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/cic/cs/unb/ca/flow/ui/FlowMonitorPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/main/java/cic/cs/unb/ca/flow/ui/FlowMonitorPane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/cic/cs/unb/ca/ifm/ui/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/main/java/cic/cs/unb/ca/ifm/ui/MainFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/debug" beforeDir="false" afterPath="$PROJECT_DIR$/logs/debug" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cic/cs/unb/ca/flow/ui/FlowMonitorPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cic/cs/unb/ca/flow/ui/FlowMonitorPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../interface.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +93,7 @@
       <workItem from="1593784627688" duration="503000" />
       <workItem from="1593785219803" duration="6842000" />
       <workItem from="1594163794156" duration="601000" />
+      <workItem from="1594430534183" duration="1306000" />
     </task>
     <servers />
   </component>

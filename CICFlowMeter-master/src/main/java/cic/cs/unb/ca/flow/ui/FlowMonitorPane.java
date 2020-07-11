@@ -318,47 +318,32 @@ public  class FlowMonitorPane extends JPanel {
         task.execute();
 
     }
-    public void netInterfaceRetrieve() throws SocketException, UnknownHostException {
-        final Enumeration<NetworkInterface> netifs = NetworkInterface.getNetworkInterfaces();
-        String ip;
-        //InetAddress myAddr = InetAddress.getLocalHost();
-        try(final DatagramSocket socket = new DatagramSocket()){
-            socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
-             ip = socket.getLocalAddress().getHostAddress();
-            System.out.println(ip);
-        }
-        InetAddress myAddr = InetAddress.getByName(ip);
-        while (netifs.hasMoreElements()) {
-            NetworkInterface networkInterface = netifs.nextElement();
-            Enumeration<InetAddress> inAddrs = networkInterface.getInetAddresses();
-            while (inAddrs.hasMoreElements()) {
-                InetAddress inAddr = inAddrs.nextElement();
-                if (inAddr.equals(myAddr)) {
-                    logger.info(networkInterface.getName(),"hhh");
-                    logger.info(networkInterface.getDisplayName(),"hhh");
-                }
-            }
-        }
-    }
+
     private void startTrafficFlow() throws SocketException,UnknownHostException {
         list = new JList<>(listModel);
-       Object o=null;
+        Object o=null;
+        Process p;
+        String interfaceToUse = null;
+        try
+        {
+            p = Runtime.getRuntime().exec("py interface.py ");
+            BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            interfaceToUse = stdInput.readLine();
+        }
+        catch(IOException ioe)
+        {
+            ioe.printStackTrace();
+        }
+
         for(int i = 0; i< list.getModel().getSize();i++) {
             System.out.println(list.getModel().getElementAt(i));
             o=list.getModel().getElementAt(i);
-//            if(o.toString().contains("any") || o.toString().contains("Microsoft")) {
-//                list.setSelectedIndex(i);
-//                break;
-//            }
+            System.out.println(o.toString());
+           if(o.toString().contains("any") || o.toString().contains(interfaceToUse)) {
+                list.setSelectedIndex(i);
+                break;
+            }
         }
-
-        try{
-            netInterfaceRetrieve();
-        }catch (SocketException e){
-            e.printStackTrace();
-        }
-        
-        list.setSelectedIndex(2);
         String ifName = list.getSelectedValue().name();
         System.out.println(ifName);
 
