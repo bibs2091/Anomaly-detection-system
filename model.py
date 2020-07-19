@@ -11,9 +11,12 @@ if not sys.warnoptions:
 
 class model:
     def __init__(self):
+        #from number to labels
+        self.number_to_label = {1 : "Bot",2 : 'DoS attack',3 : 'Brute Force', 5 : 'DDoS attacks',4 : 'Infilteration',}
         # load the pretrained model 
         try:
             self.model = load('../decision_tree_model.joblib')
+            self.attack_model = load('../attack_model.joblib')
         except:
              # error if model can't be found in the path
              logging.error("Model can\'t be found in the main directory")
@@ -61,8 +64,20 @@ class model:
 
     def predict(self):
         #predict the class of the flow
-        self.prediction = self.model.predict(self.data)
-        return self.prediction
+        self.prediction = self.model.predict(self.data).astype('int32')
+        #in case of one row prediction
+        if (self.prediction.shape[0] == 1 ):
+            if (self.prediction.item() == 1):
+                print(self.number_to_label[self.attack_model.predict(self.data[0,:].reshape(1, -1)).item()])
+            else:
+                print(0)
+                
+        else:
+            for i in range(self.prediction.shape[0]):
+                if (self.prediction[i] == 1):
+                    print(self.number_to_label[self.attack_model.predict(self.data[i,:].reshape(1, -1)).item()])
+                else:
+                    print(0)
 
     def accuracy(self):
         #calculate accuracy in case of label availaiblity
@@ -77,4 +92,4 @@ class model:
 
 m = model()
 m.load_data(sys.argv[1])
-print(m.predict())
+prediction = m.predict()
