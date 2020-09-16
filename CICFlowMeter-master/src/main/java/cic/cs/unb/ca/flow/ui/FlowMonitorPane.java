@@ -326,7 +326,12 @@ public  class FlowMonitorPane extends JPanel {
         String interfaceToUse = null;
         try
         {
-            p = Runtime.getRuntime().exec("py interface.py ");
+        	String os_name = System.getProperty("os.name");
+        	if (os_name.toString().contains("Linux")){
+           		p = Runtime.getRuntime().exec("python interface.py ");
+        	}else{
+            	p = Runtime.getRuntime().exec("py interface.py ");        		
+        	}
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
             interfaceToUse = stdInput.readLine();
         }
@@ -335,17 +340,19 @@ public  class FlowMonitorPane extends JPanel {
             ioe.printStackTrace();
         }
 
+        //System.out.println("os = : "+System.getProperty("os.name"));
         for(int i = 0; i< list.getModel().getSize();i++) {
-            System.out.println(list.getModel().getElementAt(i));
             o=list.getModel().getElementAt(i);
-            System.out.println(o.toString());
+            //System.out.println("o = : "+o.toString());
+            //System.out.println("interfaceToUse = : "+interfaceToUse.toString());
+	    
            if(o.toString().contains("any") || o.toString().contains(interfaceToUse)) {
                 list.setSelectedIndex(i);
                 break;
             }
         }
         String ifName = list.getSelectedValue().name();
-        System.out.println(ifName);
+        System.out.println("ifName : "+ifName);
 
         if (mWorker != null && !mWorker.isCancelled()) {
             return;
@@ -448,10 +455,14 @@ public  class FlowMonitorPane extends JPanel {
         Process p;
         try
         {
-//            String cmd = "py script.py " + removeTimeStamp(flowDump);
+//            String cmd = "python script.py " + removeTimeStamp(flowDump);
 //            logger.info(cmd,"hhh");
-
-            p = Runtime.getRuntime().exec("py ../model.py " + removeTimeStamp(flowDump));
+        	String os_name = System.getProperty("os.name");
+        	if (os_name.toString().contains("Linux")){
+            	p = Runtime.getRuntime().exec("python ../model.py " + removeTimeStamp(flowDump));           	
+        	}else{
+           		p = Runtime.getRuntime().exec("py ../model.py " + removeTimeStamp(flowDump));	        		
+        	}
             String s = null;
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
             while ((s = stdInput.readLine()) != null) {
