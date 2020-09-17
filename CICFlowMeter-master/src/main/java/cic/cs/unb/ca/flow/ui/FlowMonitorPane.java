@@ -42,7 +42,11 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 public  class FlowMonitorPane extends JPanel {
     protected static final Logger logger = LoggerFactory.getLogger(FlowMonitorPane.class);
 
@@ -58,6 +62,7 @@ public  class FlowMonitorPane extends JPanel {
 
     public JButton btnLoad;
     public JToggleButton btnStart;
+    public JButton btnScan;
     public JToggleButton btnStop;
     private ButtonGroup btnGroup;
 
@@ -71,13 +76,13 @@ public  class FlowMonitorPane extends JPanel {
     private TimerTask task;
 
 
-    public FlowMonitorPane() throws SocketException, UnknownHostException{
+    public FlowMonitorPane() throws SocketException, UnknownHostException,MalformedURLException,IOException{
         init();
 
-        setLayout(new BorderLayout(5, 5));
-        setBorder(new EmptyBorder(10, 10, 10, 10));
+        setLayout(new BorderLayout());
+        // setBorder(new EmptyBorder(10, 10, 10, 10));
 
-        add(initCenterPane(), BorderLayout.CENTER);
+        add(initCenterPane2());
 
     }
 
@@ -88,6 +93,56 @@ public  class FlowMonitorPane extends JPanel {
     public void destory() {
         csvWriterThread.shutdown();
     }
+    private JPanel initCenterPane2() throws SocketException, UnknownHostException,IOException{
+
+        JPanel pane = new JPanel();
+        pane.setLayout(new GridBagLayout());
+        pane.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+        pane.setBackground(new Color(85, 98, 132));
+
+        String rootPath = System.getProperty("user.dir");
+        GridBagConstraints c = new GridBagConstraints();
+        // logo icon
+        
+        JLabel label = new JLabel();
+        // label.setText("ESI IDS");
+        label.setForeground(Color.white);
+        BufferedImage labelIcon = ImageIO.read(new File(rootPath+"/src/main/resources/esi_ids.png"));
+        label.setIcon(new ImageIcon(labelIcon));
+        c.gridx = 0;
+        c.gridy = 0;
+        c.weightx = 1.0;
+        c.weighty = 1.0;
+        c.anchor = GridBagConstraints.FIRST_LINE_START;
+        
+        pane.add(label,c);
+
+        // Scan network button
+        BufferedImage buttonIcon = ImageIO.read(new File(rootPath+"/src/main/resources/scan_network.png"));
+        btnScan = new JButton(new ImageIcon(buttonIcon));
+        btnScan.setContentAreaFilled(false);
+        btnScan.setBorder(BorderFactory.createEmptyBorder());
+        btnScan.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnScan.setHorizontalAlignment(JButton.CENTER);
+        btnScan.setVerticalAlignment(JButton.CENTER);
+        c.anchor = GridBagConstraints.CENTER;
+        // c.gridx = 1;
+        // c.gridy = 1;
+        pane.add(btnScan,c);
+        
+        JLabel label2 = new JLabel();
+        // label.setText("ESI IDS");
+        label2.setForeground(Color.white);
+        BufferedImage labelIcon2 = ImageIO.read(new File(rootPath+"/src/main/resources/scan_text1.png"));
+        label2.setIcon(new ImageIcon(labelIcon2));
+        label2.setFont(label.getFont().deriveFont(20.0f));
+        c.anchor = GridBagConstraints.PAGE_END;
+        c.insets = new Insets(0,0,33,0);
+        pane.add(label2,c);
+        c.gridy = 2;
+        return pane;
+    }
+
 
     private JPanel initCenterPane() throws SocketException, UnknownHostException{
         JPanel pane = new JPanel();
@@ -120,13 +175,13 @@ public  class FlowMonitorPane extends JPanel {
         pane.setLayout(new BorderLayout(0, 0));
         pane.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
 
-
+        JButton b9 = new JButton("9"); 
         String[] arrayHeader = StringUtils.split(FlowFeature.getHeader(), ",");
         defaultTableModel = new DefaultTableModel(arrayHeader,0);
         flowTable = new JTable(defaultTableModel);
         flowTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        JScrollPane scrollPane = new JScrollPane(flowTable);
-        scrollPane.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+        JScrollPane scrollPane = new JScrollPane(b9);
+        scrollPane.setBorder(BorderFactory.createEmptyBorder(10,50,10,50));
 
 
         pane.add(scrollPane,BorderLayout.CENTER);
@@ -230,19 +285,25 @@ public  class FlowMonitorPane extends JPanel {
         btnLoad = new JButton("Load");
         btnLoad.setMinimumSize(d);
         btnLoad.setMaximumSize(d);
+        btnLoad.setOpaque(false);
+        btnLoad.setFocusPainted(false);
+        btnLoad.setBorderPainted(false);
+        btnLoad.setContentAreaFilled(false);
+        setBorder(BorderFactory.createEmptyBorder(0,0,0,0)); // Especially important
         btnLoad.addActionListener(actionEvent -> loadPcapIfs());
         btnStart = new JToggleButton("Start");
         btnStart.setMinimumSize(d);
         btnStart.setMaximumSize(d);
         btnStart.setEnabled(false);
         btnStart.addActionListener(actionEvent -> {
-            try {
-                startTrafficFlow();
-            }catch (SocketException e){
-                e.printStackTrace();
-            }catch (UnknownHostException e){
-                e.printStackTrace();
-            }
+            // try {
+            //     startTrafficFlow();
+            // }catch (SocketException e){
+            //     e.printStackTrace();
+            // }catch (UnknownHostException e){
+            //     e.printStackTrace();
+            // }
+            logger.info("Pcap stop listening");
         });
             
         

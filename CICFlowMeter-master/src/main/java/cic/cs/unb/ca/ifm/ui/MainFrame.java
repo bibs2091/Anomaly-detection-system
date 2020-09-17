@@ -24,13 +24,13 @@ public class MainFrame extends JFrame{
 	
 	
 	public MainFrame() throws HeadlessException {
-		super("CICFlowMeter");
+		super("ESI IDS");
 		
 		getContentPane().setLayout(new BorderLayout());
-		getContentPane().getInsets().set(5, 5, 5, 5);
+		getContentPane().getInsets().set(10, 15, 10, 15);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("CIC_Logo.png")));
 		
-		setMinimumSize(new Dimension(700,500));
+		setMinimumSize(new Dimension(660,380));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 
@@ -45,7 +45,7 @@ public class MainFrame extends JFrame{
             }
         });
 
-		initMenu();
+		//  initMenu();
 		
 		offLinePane = new FlowOfflinePane();
         try{

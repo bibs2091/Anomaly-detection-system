@@ -1,72 +1,7 @@
-2020-07-20 00:00:01 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 194 flow
-2020-07-20 00:00:01 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 193 flow
-2020-07-20 00:00:01 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 192 flow
-2020-07-20 00:00:01 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 191 flow
-2020-07-20 00:00:01 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 190 flow
-2020-07-20 00:00:01 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 189 flow
-2020-07-20 00:00:01 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 188 flow
-2020-07-20 00:00:01 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 192 flow
-2020-07-20 00:00:03 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 196 flow
-2020-07-20 00:00:03 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 196 flow
-2020-07-20 00:00:03 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
-2020-07-20 00:00:04 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 197 flow
-2020-07-20 00:00:04 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 197 flow
-2020-07-20 00:00:07 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
-2020-07-20 00:00:12 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
-2020-07-20 00:00:12 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 203 flow
-2020-07-20 00:00:12 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 203 flow
-2020-07-20 00:00:13 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 203 flow
-2020-07-20 00:00:13 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 202 flow
-2020-07-20 00:00:13 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 201 flow
-2020-07-20 00:00:13 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 200 flow
-2020-07-20 00:00:16 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
-2020-07-20 00:00:21 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
-2020-07-20 00:00:24 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 216 flow
-2020-07-20 00:00:24 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 216 flow
-2020-07-20 00:00:24 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 216 flow
-2020-07-20 00:00:24 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
-2020-07-20 00:00:28 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 220 flow
-2020-07-20 00:00:29 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
-2020-07-20 00:00:29 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 220 flow
-2020-07-20 00:00:29 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 220 flow
-2020-07-20 00:00:30 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 221 flow
-2020-07-20 00:00:32 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 222 flow
-2020-07-20 00:00:34 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
-2020-07-20 00:00:35 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 222 flow
-2020-07-20 00:00:37 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 230 flow
-2020-07-20 00:00:37 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 230 flow
-2020-07-20 00:00:38 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    Infilteration
-2020-07-20 00:00:41 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 235 flow
-2020-07-20 00:00:43 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
-2020-07-20 00:00:47 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
-2020-07-20 00:00:50 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
-2020-07-20 00:00:54 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    Infilteration
-2020-07-20 00:00:56 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 249 flow
-2020-07-20 00:00:56 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 249 flow
-2020-07-20 00:00:56 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 248 flow
-2020-07-20 00:00:56 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 247 flow
-2020-07-20 00:00:57 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 247 flow
-2020-07-20 00:00:57 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 247 flow
-2020-07-20 00:00:57 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 246 flow
-2020-07-20 00:00:57 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 246 flow
-2020-07-20 00:00:57 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 246 flow
-2020-07-20 00:00:57 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 246 flow
-2020-07-20 00:00:57 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 249 flow
-2020-07-20 00:00:57 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 249 flow
-2020-07-20 00:00:57 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 251 flow
-2020-07-20 00:00:57 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 251 flow
-2020-07-20 00:00:57 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
-2020-07-20 00:01:00 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 256 flow
-2020-07-20 00:01:01 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 256 flow
-2020-07-20 00:01:02 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
-2020-07-20 00:01:03 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 260 flow
-2020-07-20 00:01:03 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 260 flow
-2020-07-20 00:01:06 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 264 flow
-2020-07-20 00:01:06 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 264 flow
-2020-07-20 00:01:06 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 264 flow
-2020-07-20 00:01:07 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
-2020-07-20 00:01:11 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
-2020-07-20 00:01:14 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 266 flow
-2020-07-20 00:01:15 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    Infilteration
-2020-07-20 00:01:15 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 266 flow
-2020-07-20 00:01:16 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 275 flow
+2020-09-17 02:58:10 DEBUG cic.cs.unb.ca.ifm.App    
+2020-09-17 03:00:17 DEBUG cic.cs.unb.ca.ifm.App    
+2020-09-17 03:01:31 DEBUG cic.cs.unb.ca.ifm.App    
+2020-09-17 03:04:04 DEBUG cic.cs.unb.ca.ifm.App    
+2020-09-17 03:05:43 DEBUG cic.cs.unb.ca.ifm.App    
+2020-09-17 03:06:42 DEBUG cic.cs.unb.ca.ifm.App    
+2020-09-17 03:08:42 DEBUG cic.cs.unb.ca.ifm.App    
