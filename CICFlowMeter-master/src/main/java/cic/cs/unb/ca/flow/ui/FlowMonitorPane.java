@@ -94,7 +94,7 @@ public  class FlowMonitorPane extends JPanel {
         csvWriterThread.shutdown();
     }
     private JPanel initCenterPane2() throws SocketException, UnknownHostException,IOException{
-
+        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,initFlowPane(), initNWifsPane());
         JPanel pane = new JPanel();
         pane.setLayout(new GridBagLayout());
         pane.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
@@ -128,6 +128,10 @@ public  class FlowMonitorPane extends JPanel {
         c.anchor = GridBagConstraints.CENTER;
         // c.gridx = 1;
         // c.gridy = 1;
+        btnScan.addActionListener(actionEvent ->{
+            btnStart.doClick();                  
+         } );
+    
         pane.add(btnScan,c);
         
         JLabel label2 = new JLabel();
@@ -175,13 +179,13 @@ public  class FlowMonitorPane extends JPanel {
         pane.setLayout(new BorderLayout(0, 0));
         pane.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
 
-        JButton b9 = new JButton("9"); 
+
         String[] arrayHeader = StringUtils.split(FlowFeature.getHeader(), ",");
         defaultTableModel = new DefaultTableModel(arrayHeader,0);
         flowTable = new JTable(defaultTableModel);
         flowTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        JScrollPane scrollPane = new JScrollPane(b9);
-        scrollPane.setBorder(BorderFactory.createEmptyBorder(10,50,10,50));
+        JScrollPane scrollPane = new JScrollPane(flowTable);
+        scrollPane.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
 
 
         pane.add(scrollPane,BorderLayout.CENTER);
@@ -285,25 +289,19 @@ public  class FlowMonitorPane extends JPanel {
         btnLoad = new JButton("Load");
         btnLoad.setMinimumSize(d);
         btnLoad.setMaximumSize(d);
-        btnLoad.setOpaque(false);
-        btnLoad.setFocusPainted(false);
-        btnLoad.setBorderPainted(false);
-        btnLoad.setContentAreaFilled(false);
-        setBorder(BorderFactory.createEmptyBorder(0,0,0,0)); // Especially important
         btnLoad.addActionListener(actionEvent -> loadPcapIfs());
         btnStart = new JToggleButton("Start");
         btnStart.setMinimumSize(d);
         btnStart.setMaximumSize(d);
         btnStart.setEnabled(false);
         btnStart.addActionListener(actionEvent -> {
-            // try {
-            //     startTrafficFlow();
-            // }catch (SocketException e){
-            //     e.printStackTrace();
-            // }catch (UnknownHostException e){
-            //     e.printStackTrace();
-            // }
-            logger.info("Pcap stop listening");
+            try {
+                startTrafficFlow();
+            }catch (SocketException e){
+                e.printStackTrace();
+            }catch (UnknownHostException e){
+                e.printStackTrace();
+            }
         });
             
         
@@ -362,7 +360,7 @@ public  class FlowMonitorPane extends JPanel {
                                 listModel.addElement(pcapif);
                             }
                             btnStart.setEnabled(true);
-                            btnStart.doClick();
+                            // btnStart.doClick();
                             btnGroup.clearSelection();
 
                             lblStatus.setText("pick one network interface to listening");
@@ -387,7 +385,12 @@ public  class FlowMonitorPane extends JPanel {
         String interfaceToUse = null;
         try
         {
-            p = Runtime.getRuntime().exec("py interface.py ");
+        	String os_name = System.getProperty("os.name");
+        	if (os_name.toString().contains("Linux")){
+           		p = Runtime.getRuntime().exec("python interface.py ");
+        	}else{
+            	p = Runtime.getRuntime().exec("py interface.py ");        		
+        	}
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
             interfaceToUse = stdInput.readLine();
         }
@@ -396,17 +399,19 @@ public  class FlowMonitorPane extends JPanel {
             ioe.printStackTrace();
         }
 
+        //System.out.println("os = : "+System.getProperty("os.name"));
         for(int i = 0; i< list.getModel().getSize();i++) {
-            System.out.println(list.getModel().getElementAt(i));
             o=list.getModel().getElementAt(i);
-            System.out.println(o.toString());
+            //System.out.println("o = : "+o.toString());
+            //System.out.println("interfaceToUse = : "+interfaceToUse.toString());
+	    
            if(o.toString().contains("any") || o.toString().contains(interfaceToUse)) {
                 list.setSelectedIndex(i);
                 break;
             }
         }
         String ifName = list.getSelectedValue().name();
-        System.out.println(ifName);
+        System.out.println("ifName : "+ifName);
 
         if (mWorker != null && !mWorker.isCancelled()) {
             return;
@@ -509,10 +514,14 @@ public  class FlowMonitorPane extends JPanel {
         Process p;
         try
         {
-//            String cmd = "py script.py " + removeTimeStamp(flowDump);
+//            String cmd = "python script.py " + removeTimeStamp(flowDump);
 //            logger.info(cmd,"hhh");
-
-            p = Runtime.getRuntime().exec("py ../model.py " + removeTimeStamp(flowDump));
+        	String os_name = System.getProperty("os.name");
+        	if (os_name.toString().contains("Linux")){
+            	p = Runtime.getRuntime().exec("python ../model.py " + removeTimeStamp(flowDump));           	
+        	}else{
+           		p = Runtime.getRuntime().exec("py ../model.py " + removeTimeStamp(flowDump));	        		
+        	}
             String s = null;
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
             while ((s = stdInput.readLine()) != null) {
