@@ -189,7 +189,7 @@ public  class FlowMonitorPane extends JPanel {
 
 
     private void initNWifsPane() throws SocketException, UnknownHostException {
-        loadPcapIfs();();
+        loadPcapIfs();
         initNWifsListPane();
     }
     
@@ -249,29 +249,14 @@ public  class FlowMonitorPane extends JPanel {
         {
             ioe.printStackTrace();
         }
-<<<<<<< HEAD
-
-        //System.out.println("os = : "+System.getProperty("os.name"));
         for(int i = 0; i< list.getModel().getSize();i++) {
             o=list.getModel().getElementAt(i);
-            //System.out.println("o = : "+o.toString());
-            //System.out.println("interfaceToUse = : "+interfaceToUse.toString());
-	    
-=======
-        for(int i = 0; i< list.getModel().getSize();i++) {
-            o=list.getModel().getElementAt(i);
->>>>>>> ui
            if(o.toString().contains("any") || o.toString().contains(interfaceToUse)) {
                 list.setSelectedIndex(i);
                 break;
             }
         }
         String ifName = list.getSelectedValue().name();
-<<<<<<< HEAD
-        System.out.println("ifName : "+ifName);
-
-=======
->>>>>>> ui
         if (mWorker != null && !mWorker.isCancelled()) {
             return;
         }
@@ -328,11 +313,6 @@ public  class FlowMonitorPane extends JPanel {
         Process p;
         try
         {
-<<<<<<< HEAD
-//            String cmd = "python script.py " + removeTimeStamp(flowDump);
-//            logger.info(cmd,"hhh");
-=======
->>>>>>> ui
         	String os_name = System.getProperty("os.name");
         	if (os_name.toString().contains("Linux")){
             	p = Runtime.getRuntime().exec("python ../model.py " + removeTimeStamp(flowDump));           	
