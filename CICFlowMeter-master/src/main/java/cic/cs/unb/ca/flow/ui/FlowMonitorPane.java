@@ -42,7 +42,11 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 public  class FlowMonitorPane extends JPanel {
     protected static final Logger logger = LoggerFactory.getLogger(FlowMonitorPane.class);
 
@@ -56,14 +60,12 @@ public  class FlowMonitorPane extends JPanel {
 
     private TrafficFlowWorker mWorker;
 
-    public JButton btnLoad;
-    public JToggleButton btnStart;
-    public JToggleButton btnStop;
+    public JButton btnScan;
+    public JButton btnScanning;
     private ButtonGroup btnGroup;
-
-    private JButton btnSave = new JButton();
+    private JLabel explanatoryLabel;
+    private String rootPath;
     private File lastSave;
-    private JButton btnGraph = new JButton();
     private JFileChooser fileChooser;
 
     private ExecutorService csvWriterThread;
@@ -71,14 +73,10 @@ public  class FlowMonitorPane extends JPanel {
     private TimerTask task;
 
 
-    public FlowMonitorPane() throws SocketException, UnknownHostException{
+    public FlowMonitorPane() throws SocketException, UnknownHostException,MalformedURLException,IOException{
         init();
-
-        setLayout(new BorderLayout(5, 5));
-        setBorder(new EmptyBorder(10, 10, 10, 10));
-
-        add(initCenterPane(), BorderLayout.CENTER);
-
+        setLayout(new BorderLayout());
+        add(initCenterPane());
     }
 
     private void init() {
@@ -89,153 +87,59 @@ public  class FlowMonitorPane extends JPanel {
         csvWriterThread.shutdown();
     }
 
-    private JPanel initCenterPane() throws SocketException, UnknownHostException{
+    private JPanel initCenterPane() throws SocketException, UnknownHostException,IOException{
+        initTablePane();
+        initNWifsPane();
         JPanel pane = new JPanel();
-        pane.setLayout(new BorderLayout(0, 0));
-        pane.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+        pane.setLayout(new GridBagLayout());
+        pane.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+        
+        pane.setBackground(new Color(85, 98, 132));
+        rootPath = System.getProperty("user.dir");
+        GridBagConstraints c = new GridBagConstraints();
+       
+        // logo
+        c.gridx = c.gridy =0;
+        c.weightx = c.weighty =  1.0;
+        c.anchor = GridBagConstraints.FIRST_LINE_START;
+        pane.add(logo(),c);
 
-        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,initFlowPane(), initNWifsPane());
-        splitPane.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
-        splitPane.setOneTouchExpandable(true);
-        splitPane.setResizeWeight(1.0);
+        // click to scan network button (init button)
+        c.anchor = GridBagConstraints.CENTER;
+        pane.add(scanButton(),c);
+        
+        // Scanning button
+        c.anchor = GridBagConstraints.CENTER;
+        pane.add(scanningButton(),c);
 
-        pane.add(splitPane,BorderLayout.CENTER);
+        // text label
+        c.anchor = GridBagConstraints.PAGE_END;
+        c.insets = new Insets(0,0,33,0);
+        pane.add(explanatoryLabel(),c);
         return pane;
     }
 
-    private JPanel initFlowPane() throws SocketException, UnknownHostException{
-        JPanel pane = new JPanel();
-        pane.setLayout(new BorderLayout(0, 5));
-        pane.setBorder(BorderFactory.createLineBorder(new Color(0x555555)));
-
-        //pane.add(initTableBtnPane(), BorderLayout.NORTH);
-        pane.add(initTablePane(), BorderLayout.CENTER);
-        pane.add(initStatusPane(), BorderLayout.SOUTH);
-
-        return pane;
+    private JLabel logo() throws IOException{
+        JLabel label = new JLabel();
+        label.setForeground(Color.white);
+        BufferedImage labelIcon = ImageIO.read(new File(rootPath+"/src/main/resources/esi_ids.png"));
+        label.setIcon(new ImageIcon(labelIcon));
+        return label;
     }
 
-    private JPanel initTablePane() throws SocketException, UnknownHostException{
-        JPanel pane = new JPanel();
-        pane.setLayout(new BorderLayout(0, 0));
-        pane.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
-
-
-        String[] arrayHeader = StringUtils.split(FlowFeature.getHeader(), ",");
-        defaultTableModel = new DefaultTableModel(arrayHeader,0);
-        flowTable = new JTable(defaultTableModel);
-        flowTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        JScrollPane scrollPane = new JScrollPane(flowTable);
-        scrollPane.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
-
-
-        pane.add(scrollPane,BorderLayout.CENTER);
-
-        return pane;
-    }
-
-    private JPanel initTableBtnPane() throws SocketException, UnknownHostException{
-        JPanel btnPane = new JPanel();
-        btnPane.setLayout(new BoxLayout(btnPane, BoxLayout.X_AXIS));
-        btnSave = new JButton("Save as");
-        btnGraph = new JButton("Graphs");
-        btnSave.setFocusable(false);
-        btnSave.setEnabled(false);
-        btnGraph.setFocusable(false);
-        btnGraph.setEnabled(false);
-
-        fileChooser = new JFileChooser(new File(FlowMgr.getInstance().getmDataPath()));
-        TextFileFilter csvChooserFilter = new TextFileFilter("csv file (*.csv)", new String[]{"csv"});
-        fileChooser.setFileFilter(csvChooserFilter);
-
-        btnSave.addActionListener(actionEvent -> {
-            int action = fileChooser.showSaveDialog(FlowMonitorPane.this);
-            if (action == JFileChooser.APPROVE_OPTION) {
-
-                File selectedFile = fileChooser.getSelectedFile();
-                String filename = selectedFile.getName();
-                if (FilenameUtils.getExtension(filename).equalsIgnoreCase("csv")) {
-                    //save name ok
-                } else {
-                    selectedFile = new File(selectedFile.getParentFile(), FilenameUtils.getBaseName(filename) + ".csv");
-                }
-                String title = "file conflict";
-                String message = "Another file with the same name already exists,do you want to overwrite?";
-
-                if (selectedFile.exists()) {
-
-                    int reply = JOptionPane.showConfirmDialog(this, message, title, JOptionPane.YES_NO_OPTION);
-
-                    if (reply == JOptionPane.YES_OPTION) {
-                        JTable2CSVWorker worker = new JTable2CSVWorker(flowTable, selectedFile);
-                        worker.execute();
-                    } else {
-                        btnSave.doClick();
-                    }
-                } else {
-                    JTable2CSVWorker worker = new JTable2CSVWorker(flowTable, selectedFile);
-                    worker.execute();
-                }
-                lastSave = selectedFile;
-                btnGraph.setEnabled(true);
-            }
-
-        });
-
-        btnGraph.addActionListener(actionEvent -> GuavaMgr.getInstance().getEventBus().post(new FlowVisualEvent(lastSave)));
-
-        btnPane.add(Box.createHorizontalGlue());
-        btnPane.add(btnSave);
-        btnPane.add(Box.createHorizontalGlue());
-        btnPane.add(btnGraph);
-        btnPane.add(Box.createHorizontalGlue());
-
-        btnPane.setBorder(BorderFactory.createRaisedSoftBevelBorder());
-
-        return btnPane;
-    }
-
-    private JPanel initStatusPane() throws SocketException, UnknownHostException{
-        JPanel pane = new JPanel();
-        pane.setLayout(new BoxLayout(pane, BoxLayout.X_AXIS));
-        lblStatus = new JLabel("Get ready");
-        lblStatus.setForeground(SystemColor.desktop);
-        lblFlowCnt = new JLabel("0");
-
-        pane.add(Box.createHorizontalStrut(5));
-        pane.add(lblStatus);
-        pane.add(Box.createHorizontalGlue());
-        pane.add(lblFlowCnt);
-        pane.add(Box.createHorizontalStrut(5));
-
-        return pane;
-    }
-
-    private JPanel initNWifsPane() throws SocketException, UnknownHostException {
-        JPanel pane = new JPanel(new BorderLayout(0, 0));
-        pane.setBorder(BorderFactory.createLineBorder(new Color(0x555555)));
-        pane.add(initNWifsButtonPane(), BorderLayout.WEST);
-        pane.add(initNWifsListPane(), BorderLayout.CENTER);
-
-        return pane;
-    }
-
-    private JPanel initNWifsButtonPane()   {
-        JPanel pane = new JPanel();
-        pane.setBorder(BorderFactory.createEmptyBorder(10,15,10,15));
-        pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
-
-        Dimension d = new Dimension(80,48);
-
-        btnLoad = new JButton("Load");
-        btnLoad.setMinimumSize(d);
-        btnLoad.setMaximumSize(d);
-        btnLoad.addActionListener(actionEvent -> loadPcapIfs());
-        btnStart = new JToggleButton("Start");
-        btnStart.setMinimumSize(d);
-        btnStart.setMaximumSize(d);
-        btnStart.setEnabled(false);
-        btnStart.addActionListener(actionEvent -> {
+    private JButton scanButton() throws IOException{
+        BufferedImage buttonIcon = ImageIO.read(new File(rootPath+"/src/main/resources/scan_network.png"));
+        btnScan = new JButton(new ImageIcon(buttonIcon));
+        btnScan.setContentAreaFilled(false);
+        btnScan.setBorder(BorderFactory.createEmptyBorder());
+        btnScan.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnScan.setHorizontalAlignment(JButton.CENTER);
+        btnScan.setVerticalAlignment(JButton.CENTER);
+        btnScan.setVisible(true);
+        
+        btnScan.addActionListener(actionEvent ->{
+            btnScanning.setVisible(true);
+            btnScan.setVisible(false);
             try {
                 startTrafficFlow();
             }catch (SocketException e){
@@ -243,44 +147,58 @@ public  class FlowMonitorPane extends JPanel {
             }catch (UnknownHostException e){
                 e.printStackTrace();
             }
-        });
-            
-        
-        btnStop = new JToggleButton("Stop");
-        btnStop.setMinimumSize(d);
-        btnStop.setMaximumSize(d);
-        btnStop.setEnabled(false);
-        btnStop.addActionListener(actionEvent -> stopTrafficFlow());
-
-        btnGroup = new ButtonGroup();
-        btnGroup.add(btnStart);
-        btnGroup.add(btnStop);
-
-        pane.add(Box.createVerticalGlue());
-        pane.add(btnLoad);
-        pane.add(Box.createVerticalGlue());
-        pane.add(btnStart);
-        pane.add(Box.createVerticalGlue());
-        pane.add(btnStop);
-        pane.add(Box.createVerticalGlue());
-        return pane;
+        } );
+    
+        return btnScan;
     }
 
-    private JPanel initNWifsListPane() {
-        JPanel pane = new JPanel();
-        pane.setLayout(new BorderLayout(0, 0));
-        pane.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+    private JButton scanningButton() throws IOException{
+        BufferedImage buttonIcon2 = ImageIO.read(new File(rootPath+"/src/main/resources/scanning.png"));
+        btnScanning = new JButton(new ImageIcon(buttonIcon2));
+        btnScanning.setContentAreaFilled(false);
+        btnScanning.setBorder(BorderFactory.createEmptyBorder());
+        btnScanning.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnScanning.setHorizontalAlignment(JButton.CENTER);
+        btnScanning.setVerticalAlignment(JButton.CENTER);
+        btnScanning.setVisible(false);
+        btnScanning.addActionListener(actionEvent ->{
+            btnScanning.setVisible(false);              
+            btnScan.setVisible(true);
+            stopTrafficFlow();
+         } );
+        return btnScanning;
+    }
 
+    private JLabel explanatoryLabel() throws IOException{
+        BufferedImage labelIcon2 = ImageIO.read(new File(rootPath+"/src/main/resources/scan_text1.png"));
+        explanatoryLabel = new JLabel();
+        explanatoryLabel.setIcon(new ImageIcon(labelIcon2));
+        return explanatoryLabel;
+    }
+
+    private void initTablePane() throws SocketException, UnknownHostException{
+        String[] arrayHeader = StringUtils.split(FlowFeature.getHeader(), ",");
+        defaultTableModel = new DefaultTableModel(arrayHeader,0);
+    }
+
+    private void initTableBtnPane() throws SocketException, UnknownHostException{
+        fileChooser = new JFileChooser(new File(FlowMgr.getInstance().getmDataPath()));
+        TextFileFilter csvChooserFilter = new TextFileFilter("csv file (*.csv)", new String[]{"csv"});
+        fileChooser.setFileFilter(csvChooserFilter);
+    }
+
+
+    private void initNWifsPane() throws SocketException, UnknownHostException {
+        loadPcapIfs();();
+        initNWifsListPane();
+    }
+    
+    private void initNWifsListPane() {
         listModel = new DefaultListModel<>();
         listModel.addElement(new PcapIfWrapper("Click Load button to load network interfaces"));
         list = new JList<>(listModel);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setSelectedIndex(1);
-        JScrollPane scrollPane = new JScrollPane(list);
-        scrollPane.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
-
-        pane.add(scrollPane,BorderLayout.CENTER);
-        return pane;
     }
 
     private void loadPcapIfs() {
@@ -295,18 +213,10 @@ public  class FlowMonitorPane extends JPanel {
                         try {
                             java.util.List<PcapIf> ifs = task1.get();
                             List<PcapIfWrapper> pcapiflist = PcapIfWrapper.fromPcapIf(ifs);
-
                             listModel.removeAllElements();
                             for(PcapIfWrapper pcapif :pcapiflist) {
                                 listModel.addElement(pcapif);
                             }
-                            btnStart.setEnabled(true);
-                            btnStart.doClick();
-                            btnGroup.clearSelection();
-
-                            lblStatus.setText("pick one network interface to listening");
-                            lblStatus.validate();
-
                         } catch (InterruptedException | ExecutionException e) {
                             logger.debug(e.getMessage());
                         }
@@ -339,6 +249,7 @@ public  class FlowMonitorPane extends JPanel {
         {
             ioe.printStackTrace();
         }
+<<<<<<< HEAD
 
         //System.out.println("os = : "+System.getProperty("os.name"));
         for(int i = 0; i< list.getModel().getSize();i++) {
@@ -346,14 +257,21 @@ public  class FlowMonitorPane extends JPanel {
             //System.out.println("o = : "+o.toString());
             //System.out.println("interfaceToUse = : "+interfaceToUse.toString());
 	    
+=======
+        for(int i = 0; i< list.getModel().getSize();i++) {
+            o=list.getModel().getElementAt(i);
+>>>>>>> ui
            if(o.toString().contains("any") || o.toString().contains(interfaceToUse)) {
                 list.setSelectedIndex(i);
                 break;
             }
         }
         String ifName = list.getSelectedValue().name();
+<<<<<<< HEAD
         System.out.println("ifName : "+ifName);
 
+=======
+>>>>>>> ui
         if (mWorker != null && !mWorker.isCancelled()) {
             return;
         }
@@ -361,56 +279,22 @@ public  class FlowMonitorPane extends JPanel {
         mWorker = new TrafficFlowWorker(ifName);
         mWorker.addPropertyChangeListener(event -> {
             TrafficFlowWorker task = (TrafficFlowWorker) event.getSource();
-            if("progress".equals(event.getPropertyName())){
-                lblStatus.setText((String) event.getNewValue());
-                lblStatus.validate();
-            }else if (TrafficFlowWorker.PROPERTY_FLOW.equalsIgnoreCase(event.getPropertyName())) {
+            if (TrafficFlowWorker.PROPERTY_FLOW.equalsIgnoreCase(event.getPropertyName())) {
                 insertFlow((BasicFlow) event.getNewValue());
-            }else if ("state".equals(event.getPropertyName())) {
-                switch (task.getState()) {
-                    case STARTED:
-                        break;
-                    case DONE:
-                        try {
-                            lblStatus.setText(task.get());
-                            lblStatus.validate();
-                        } catch(CancellationException e){
-
-                            lblStatus.setText("stop listening");
-                            lblStatus.setForeground(SystemColor.GRAY);
-                            lblStatus.validate();
-                            logger.info("Pcap stop listening");
-
-                        }catch (InterruptedException | ExecutionException e) {
-                            logger.debug(e.getMessage());
-                        }
-                        break;
-                }
             }
         });
         mWorker.execute();
-        lblStatus.setForeground(SystemColor.desktop);
-        btnLoad.setEnabled(false);
-        btnStop.setEnabled(true);
         String path = FlowMgr.getInstance().getAutoSaveFile();
         logger.info("path:{}", path);
-
-       // this.timer();
-
-
-
-
     }
 
     public void timer()
     {
-
-
          timer=new Timer();
          task = new TimerTask() {
             @Override
             public void run() {
-                btnStop.doClick();
+                stopTrafficFlow();
                 System.out.println("timer working");
                 timer.cancel();
             }
@@ -423,17 +307,6 @@ public  class FlowMonitorPane extends JPanel {
         if (mWorker != null) {
             mWorker.cancel(true);
         }
-
-        //FlowMgr.getInstance().stopFetchFlow();
-
-        btnLoad.setEnabled(true);
-
-
-        String path = FlowMgr.getInstance().getAutoSaveFile();
-        logger.info("path:{}", path);
-        FlowMgr.i++;
-
-       // System.exit(0);
     }
     private String removeTimeStamp(String flowDump){
         int i = 0;
@@ -455,8 +328,11 @@ public  class FlowMonitorPane extends JPanel {
         Process p;
         try
         {
+<<<<<<< HEAD
 //            String cmd = "python script.py " + removeTimeStamp(flowDump);
 //            logger.info(cmd,"hhh");
+=======
+>>>>>>> ui
         	String os_name = System.getProperty("os.name");
         	if (os_name.toString().contains("Linux")){
             	p = Runtime.getRuntime().exec("python ../model.py " + removeTimeStamp(flowDump));           	
@@ -478,22 +354,7 @@ public  class FlowMonitorPane extends JPanel {
             ioe.printStackTrace();
         }
 
-        //write flows to csv file
-        String header  = FlowFeature.getHeader();
-        String path = FlowMgr.getInstance().getSavePath();
-        String filename = FlowMgr.i+ FlowMgr.FLOW_SUFFIX;
-        csvWriterThread.execute(new InsertCsvRow(header, flowStringList, path, filename));
-
-        //insert flows to JTable
-        SwingUtilities.invokeLater(new InsertTableRow(defaultTableModel,flowDataList,lblFlowCnt));
-        btnSave.setEnabled(true);
-        if(defaultTableModel.getRowCount()>=10 && new File(path).exists()) {
-            btnStop.doClick();
-            btnStart.doClick();
-            for (int i = defaultTableModel.getRowCount() - 1; i > -1; i--) {
-                defaultTableModel.removeRow(i);
-            }
-        }
+    
     }
     
 }

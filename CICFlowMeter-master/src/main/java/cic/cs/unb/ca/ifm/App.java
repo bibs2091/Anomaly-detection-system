@@ -61,9 +61,7 @@ public class App {
                 new MainFrame();
 
 				flowMonitorPane=MainFrame.monitorPane;
-				flowMonitorPane.btnLoad.doClick();
 				flowMonitorPane.timer.purge();
-				flowMonitorPane.btnStop.doClick();
 
 				System.out.println("im dead");
 

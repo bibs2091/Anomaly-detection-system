@@ -10,12 +10,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.2/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/main/java/cic/cs/unb/ca/flow/ui/FlowMonitorPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/main/java/cic/cs/unb/ca/flow/ui/FlowMonitorPane.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/main/java/cic/cs/unb/ca/ifm/ui/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/main/java/cic/cs/unb/ca/ifm/ui/MainFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/debug" beforeDir="false" afterPath="$PROJECT_DIR$/logs/debug" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cic/cs/unb/ca/flow/ui/FlowMonitorPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cic/cs/unb/ca/flow/ui/FlowMonitorPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../interface.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +94,9 @@
       <workItem from="1593785219803" duration="6842000" />
       <workItem from="1594163794156" duration="601000" />
       <workItem from="1594430534183" duration="1306000" />
+      <workItem from="1599860397594" duration="1211000" />
+      <workItem from="1599871719814" duration="2361000" />
+      <workItem from="1600273346092" duration="161000" />
     </task>
     <servers />
   </component>
@@ -101,10 +104,18 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="409" y="16" key="#App" timestamp="1599872177326">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="409" y="16" key="#App/0.0.1366.728@0.0.1366.728" timestamp="1599872177326" />
     <state x="137" y="0" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593785500609">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="137" y="0" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1593785500609" />
+    <state x="193" y="0" key="CommitChangelistDialog2" timestamp="1599872339032">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="193" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1599872339032" />
     <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1593785103073">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
