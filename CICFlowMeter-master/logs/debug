@@ -5,3 +5,123 @@
 2020-09-17 03:05:43 DEBUG cic.cs.unb.ca.ifm.App    
 2020-09-17 03:06:42 DEBUG cic.cs.unb.ca.ifm.App    
 2020-09-17 03:08:42 DEBUG cic.cs.unb.ca.ifm.App    
+2020-09-21 02:17:59 DEBUG cic.cs.unb.ca.ifm.App    
+2020-09-21 02:18:01 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    path:C:\Users\bibs2091\Desktop\Projects\Anomaly-detection\CICFlowMeter-master\data\daily\219_Flow.csv
+2020-09-21 02:18:01 INFO  cic.cs.unb.ca.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2020-09-21 02:18:07 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 2 flow
+2020-09-21 02:18:07 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 4 flow
+2020-09-21 02:18:07 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 4 flow
+2020-09-21 02:18:12 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:18:15 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:18:20 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:21:25 DEBUG cic.cs.unb.ca.ifm.App    
+2020-09-21 02:21:27 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    path:C:\Users\bibs2091\Desktop\Projects\Anomaly-detection\CICFlowMeter-master\data\daily\220_Flow.csv
+2020-09-21 02:21:27 INFO  cic.cs.unb.ca.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2020-09-21 02:21:37 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 10 flow
+2020-09-21 02:21:37 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 10 flow
+2020-09-21 02:21:37 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 10 flow
+2020-09-21 02:21:37 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 10 flow
+2020-09-21 02:21:40 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    Infilteration
+2020-09-21 02:21:41 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 24 flow
+2020-09-21 02:21:41 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 24 flow
+2020-09-21 02:21:41 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 24 flow
+2020-09-21 02:21:41 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 24 flow
+2020-09-21 02:21:44 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:21:44 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 30 flow
+2020-09-21 02:21:47 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 31 flow
+2020-09-21 02:21:47 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 31 flow
+2020-09-21 02:21:47 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:21:50 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:21:53 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:21:55 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    Infilteration
+2020-09-21 02:21:58 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:22:01 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:22:06 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:22:09 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:22:12 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    Infilteration
+2020-09-21 02:22:13 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    path:C:\Users\bibs2091\Desktop\Projects\Anomaly-detection\CICFlowMeter-master\data\daily\220_Flow.csv
+2020-09-21 02:22:13 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    path:C:\Users\bibs2091\Desktop\Projects\Anomaly-detection\CICFlowMeter-master\data\daily\221_Flow.csv
+2020-09-21 02:22:13 INFO  cic.cs.unb.ca.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2020-09-21 02:22:13 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    path:C:\Users\bibs2091\Desktop\Projects\Anomaly-detection\CICFlowMeter-master\data\daily\221_Flow.csv
+2020-09-21 02:22:13 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    path:C:\Users\bibs2091\Desktop\Projects\Anomaly-detection\CICFlowMeter-master\data\daily\222_Flow.csv
+2020-09-21 02:22:13 INFO  cic.cs.unb.ca.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2020-09-21 02:22:13 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    path:C:\Users\bibs2091\Desktop\Projects\Anomaly-detection\CICFlowMeter-master\data\daily\222_Flow.csv
+2020-09-21 02:25:25 DEBUG cic.cs.unb.ca.ifm.App    
+2020-09-21 02:25:28 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    path:C:\Users\bibs2091\Desktop\Projects\Anomaly-detection\CICFlowMeter-master\data\daily\221_Flow.csv
+2020-09-21 02:25:28 INFO  cic.cs.unb.ca.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2020-09-21 02:25:37 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 6 flow
+2020-09-21 02:25:41 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:26:00 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 9 flow
+2020-09-21 02:26:00 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 9 flow
+2020-09-21 02:26:00 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 9 flow
+2020-09-21 02:26:00 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 11 flow
+2020-09-21 02:26:03 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:26:05 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:26:07 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:26:10 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:27:06 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 31 flow
+2020-09-21 02:27:06 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 30 flow
+2020-09-21 02:27:06 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 33 flow
+2020-09-21 02:27:06 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 34 flow
+2020-09-21 02:27:08 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:27:11 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:27:13 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:27:16 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:27:56 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 38 flow
+2020-09-21 02:27:58 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:28:01 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:28:03 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:28:05 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:28:07 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:28:10 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:28:12 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    Infilteration
+2020-09-21 02:28:35 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 39 flow
+2020-09-21 02:28:35 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 39 flow
+2020-09-21 02:28:37 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    Infilteration
+2020-09-21 02:28:39 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:28:41 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:28:43 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:28:45 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:28:48 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:28:50 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:28:52 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    DoS attack
+2020-09-21 02:28:54 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:29:12 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:30:10 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 40 flow
+2020-09-21 02:30:12 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:30:14 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:30:16 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:30:18 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:30:20 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:30:22 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    Infilteration
+2020-09-21 02:30:25 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:30:56 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 40 flow
+2020-09-21 02:30:58 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:31:00 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:31:03 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:31:05 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:31:08 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:31:56 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 40 flow
+2020-09-21 02:31:56 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 40 flow
+2020-09-21 02:31:56 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 41 flow
+2020-09-21 02:31:56 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 42 flow
+2020-09-21 02:31:59 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:32:01 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:32:03 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:32:06 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:32:08 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:32:11 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:32:13 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:32:15 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    Infilteration
+2020-09-21 02:32:58 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:33:00 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:33:03 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:33:05 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:33:08 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:33:11 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:33:22 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:33:26 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    0
+2020-09-21 02:33:26 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    path:C:\Users\bibs2091\Desktop\Projects\Anomaly-detection\CICFlowMeter-master\data\daily\221_Flow.csv
+2020-09-21 02:33:28 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    path:C:\Users\bibs2091\Desktop\Projects\Anomaly-detection\CICFlowMeter-master\data\daily\222_Flow.csv
+2020-09-21 02:33:28 INFO  cic.cs.unb.ca.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2020-09-21 02:33:29 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    path:C:\Users\bibs2091\Desktop\Projects\Anomaly-detection\CICFlowMeter-master\data\daily\222_Flow.csv

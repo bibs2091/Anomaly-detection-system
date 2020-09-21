@@ -60,11 +60,8 @@ public  class FlowMonitorPane extends JPanel {
 
     private TrafficFlowWorker mWorker;
 
-    public JButton btnLoad;
-    public JToggleButton btnStart;
     public JButton btnScan;
     public JButton btnScanning;
-    public JToggleButton btnStop;
     private ButtonGroup btnGroup;
     private JLabel explanatoryLabel;
     private String rootPath;
@@ -143,7 +140,13 @@ public  class FlowMonitorPane extends JPanel {
         btnScan.addActionListener(actionEvent ->{
             btnScanning.setVisible(true);
             btnScan.setVisible(false);
-            btnStart.doClick(); 
+            try {
+                startTrafficFlow();
+            }catch (SocketException e){
+                e.printStackTrace();
+            }catch (UnknownHostException e){
+                e.printStackTrace();
+            }
         } );
     
         return btnScan;
@@ -161,7 +164,7 @@ public  class FlowMonitorPane extends JPanel {
         btnScanning.addActionListener(actionEvent ->{
             btnScanning.setVisible(false);              
             btnScan.setVisible(true);
-            btnStop.doClick(); 
+            stopTrafficFlow();
          } );
         return btnScanning;
     }
@@ -186,30 +189,10 @@ public  class FlowMonitorPane extends JPanel {
 
 
     private void initNWifsPane() throws SocketException, UnknownHostException {
-        initNWifsButtonPane();
+        loadPcapIfs();();
         initNWifsListPane();
     }
-
-    private void initNWifsButtonPane()   {
-        btnLoad = new JButton("Load");
-        btnLoad.addActionListener(actionEvent -> loadPcapIfs());
-        btnStart = new JToggleButton("Start");
-        btnStart.setEnabled(false);
-        btnStart.addActionListener(actionEvent -> {
-            try {
-                startTrafficFlow();
-            }catch (SocketException e){
-                e.printStackTrace();
-            }catch (UnknownHostException e){
-                e.printStackTrace();
-            }
-        });
-            
-        btnStop = new JToggleButton("Stop");
-        btnStop.setEnabled(false);
-        btnStop.addActionListener(actionEvent -> stopTrafficFlow());
-    }
-
+    
     private void initNWifsListPane() {
         listModel = new DefaultListModel<>();
         listModel.addElement(new PcapIfWrapper("Click Load button to load network interfaces"));
@@ -234,7 +217,6 @@ public  class FlowMonitorPane extends JPanel {
                             for(PcapIfWrapper pcapif :pcapiflist) {
                                 listModel.addElement(pcapif);
                             }
-                            btnStart.setEnabled(true);
                         } catch (InterruptedException | ExecutionException e) {
                             logger.debug(e.getMessage());
                         }
@@ -267,11 +249,8 @@ public  class FlowMonitorPane extends JPanel {
         {
             ioe.printStackTrace();
         }
-        //System.out.println("os = : "+System.getProperty("os.name"));
         for(int i = 0; i< list.getModel().getSize();i++) {
             o=list.getModel().getElementAt(i);
-            //System.out.println("o = : "+o.toString());
-            //System.out.println("interfaceToUse = : "+interfaceToUse.toString());
            if(o.toString().contains("any") || o.toString().contains(interfaceToUse)) {
                 list.setSelectedIndex(i);
                 break;
@@ -290,8 +269,6 @@ public  class FlowMonitorPane extends JPanel {
             }
         });
         mWorker.execute();
-        btnLoad.setEnabled(false);
-        btnStop.setEnabled(true);
         String path = FlowMgr.getInstance().getAutoSaveFile();
         logger.info("path:{}", path);
     }
@@ -302,7 +279,7 @@ public  class FlowMonitorPane extends JPanel {
          task = new TimerTask() {
             @Override
             public void run() {
-                btnStop.doClick();
+                stopTrafficFlow();
                 System.out.println("timer working");
                 timer.cancel();
             }
@@ -315,17 +292,6 @@ public  class FlowMonitorPane extends JPanel {
         if (mWorker != null) {
             mWorker.cancel(true);
         }
-
-        //FlowMgr.getInstance().stopFetchFlow();
-
-        btnLoad.setEnabled(true);
-
-
-        String path = FlowMgr.getInstance().getAutoSaveFile();
-        logger.info("path:{}", path);
-        FlowMgr.i++;
-
-       // System.exit(0);
     }
     private String removeTimeStamp(String flowDump){
         int i = 0;
@@ -368,21 +334,7 @@ public  class FlowMonitorPane extends JPanel {
             ioe.printStackTrace();
         }
 
-        //write flows to csv file
-        String header  = FlowFeature.getHeader();
-        String path = FlowMgr.getInstance().getSavePath();
-        String filename = FlowMgr.i+ FlowMgr.FLOW_SUFFIX;
-        csvWriterThread.execute(new InsertCsvRow(header, flowStringList, path, filename));
-
-        //insert flows to JTable
-        SwingUtilities.invokeLater(new InsertTableRow(defaultTableModel,flowDataList,lblFlowCnt));
-        if(defaultTableModel.getRowCount()>=10 && new File(path).exists()) {
-            btnStop.doClick();
-            btnStart.doClick();
-            for (int i = defaultTableModel.getRowCount() - 1; i > -1; i--) {
-                defaultTableModel.removeRow(i);
-            }
-        }
+    
     }
     
 }
