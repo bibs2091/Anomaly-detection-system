@@ -189,7 +189,7 @@ public  class FlowMonitorPane extends JPanel {
 
 
     private void initNWifsPane() throws SocketException, UnknownHostException {
-        loadPcapIfs();();
+        loadPcapIfs();
         initNWifsListPane();
     }
     
