@@ -47,10 +47,15 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import java.io.DataOutputStream;
+
+
+
 public  class FlowMonitorPane extends JPanel {
     protected static final Logger logger = LoggerFactory.getLogger(FlowMonitorPane.class);
 
-
+    private Socket s;  
+    private DataOutputStream dout;
     private JTable flowTable;
     private DefaultTableModel defaultTableModel;
     public JList<PcapIfWrapper> list;
@@ -77,6 +82,16 @@ public  class FlowMonitorPane extends JPanel {
         init();
         setLayout(new BorderLayout());
         add(initCenterPane());
+        //close connection to server when shutting down
+        Runtime.getRuntime().addShutdownHook(new Thread(){public void run(){
+            try {
+                dout.writeUTF("goodbye");
+                dout.close();  
+                s.close();
+                System.out.println("The server is shut down!");
+            } catch (IOException e) { e.printStackTrace(); }
+        }});     
+        //
     }
 
     private void init() {
@@ -262,12 +277,18 @@ public  class FlowMonitorPane extends JPanel {
         }
 
         mWorker = new TrafficFlowWorker(ifName);
+        //open connection to server
+        try{
+        s=new Socket("localhost",3005);  
+        dout=new DataOutputStream(s.getOutputStream());
+        //
         mWorker.addPropertyChangeListener(event -> {
             TrafficFlowWorker task = (TrafficFlowWorker) event.getSource();
             if (TrafficFlowWorker.PROPERTY_FLOW.equalsIgnoreCase(event.getPropertyName())) {
                 insertFlow((BasicFlow) event.getNewValue());
             }
         });
+        }catch(Exception e){System.out.println(e);}
         mWorker.execute();
         String path = FlowMgr.getInstance().getAutoSaveFile();
         logger.info("path:{}", path);
@@ -318,7 +339,10 @@ public  class FlowMonitorPane extends JPanel {
             	p = Runtime.getRuntime().exec("python ../model.py " + removeTimeStamp(flowDump));           	
         	}else{
            		p = Runtime.getRuntime().exec("py ../model.py " + removeTimeStamp(flowDump));	        		
-        	}
+            }
+            //sending flow to server  
+            dout.writeUTF(removeTimeStamp(flowDump));  
+            dout.flush();
             String s = null;
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
             while ((s = stdInput.readLine()) != null) {
