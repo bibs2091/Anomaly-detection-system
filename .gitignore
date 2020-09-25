@@ -1,5 +1,6 @@
 # IDEs and Text editors
 .vscode
+__pycache__/*
 
 # mac os files
 .DS_Store
