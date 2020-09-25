@@ -93,6 +93,7 @@ class model:
 """
 m = model()
 m.load_data(sys.argv[1])
-prediction = m.predict()"""
+prediction = m.predict()
+"""
 
 
