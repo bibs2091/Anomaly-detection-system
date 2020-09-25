@@ -22,8 +22,8 @@ def server_program():
             break
 
         m.load_data(data)
-        prediction = str(m.predict())
-        conn.send(str(prediction).encode())
+        prediction = m.predict()
+        #conn.send(str(prediction).encode())
     conn.close() 
 
 
