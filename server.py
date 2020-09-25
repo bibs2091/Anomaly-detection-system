@@ -3,8 +3,9 @@ from model import model
 
 m = model()
 
+#check for unwanted bytes and remove them
 def check_flow_return_string(recv):
-    allowed_chars = ["0","1","2","3","4","5","6","7","8","9",'.',',','-','N','e','d','M','a','n','u','l','L','b','E']
+    allowed_chars = ["0","1","2","3","4","5","6","7","8","9",'.',',','-','N','e','d','M','a','n','u','l','L','b','E','p','o','i','t']
     data =  ""
     for i in recv:
         char = chr(i)
@@ -12,9 +13,17 @@ def check_flow_return_string(recv):
             data += chr(i)
     return data
 
+def load_and_predict(data):
+    #break the concatinated flows
+    #and predict for each one
+    for d in data.split("bpoint"):
+        if d != '' and len(d.split(',')) == 83:
+            m.load_data(d)
+            prediction = m.predict()
+
 def server_program():
     
-    host = socket.gethostname()
+    host = "localhost"
     port = 5000 
 
     server_socket = socket.socket() 
@@ -27,16 +36,14 @@ def server_program():
         # won't accept data packet greater than 2048 bytes
 
         recv = conn.recv(2048)
+        #if client exit
+        if recv == "exit":
+            break
         data = check_flow_return_string(recv)
-        print(data)
-        #data = data.decode()
-        #data = conn.recv(2048).decode()
         if not data:
             # if data is not received break
             break
-
-        m.load_data(data)
-        prediction = m.predict()
+        load_and_predict(data)
         #conn.send(str(prediction).encode())
     conn.close() 
 

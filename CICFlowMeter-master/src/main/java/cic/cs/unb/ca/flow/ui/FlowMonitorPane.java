@@ -82,13 +82,18 @@ public  class FlowMonitorPane extends JPanel {
         init();
         setLayout(new BorderLayout());
         add(initCenterPane());
+        //open connection to server
+        try{
+        s=new Socket("localhost",5000);  
+        dout=new DataOutputStream(s.getOutputStream());
+        }catch(Exception e){System.out.println(e);}
+        //
         //close connection to server when shutting down
         Runtime.getRuntime().addShutdownHook(new Thread(){public void run(){
             try {
-                dout.writeUTF("goodbye");
+            	dout.writeUTF("exit");
                 dout.close();  
                 s.close();
-                System.out.println("The server is shut down!");
             } catch (IOException e) { e.printStackTrace(); }
         }});     
         //
@@ -277,18 +282,14 @@ public  class FlowMonitorPane extends JPanel {
         }
 
         mWorker = new TrafficFlowWorker(ifName);
-        //open connection to server
-        try{
-        s=new Socket("localhost",3005);  
-        dout=new DataOutputStream(s.getOutputStream());
-        //
+        
         mWorker.addPropertyChangeListener(event -> {
             TrafficFlowWorker task = (TrafficFlowWorker) event.getSource();
             if (TrafficFlowWorker.PROPERTY_FLOW.equalsIgnoreCase(event.getPropertyName())) {
                 insertFlow((BasicFlow) event.getNewValue());
             }
         });
-        }catch(Exception e){System.out.println(e);}
+        
         mWorker.execute();
         String path = FlowMgr.getInstance().getAutoSaveFile();
         logger.info("path:{}", path);
@@ -334,24 +335,9 @@ public  class FlowMonitorPane extends JPanel {
         Process p;
         try
         {
-        	String os_name = System.getProperty("os.name");
-        	if (os_name.toString().contains("Linux")){
-            	p = Runtime.getRuntime().exec("python ../model.py " + removeTimeStamp(flowDump));           	
-        	}else{
-           		p = Runtime.getRuntime().exec("py ../model.py " + removeTimeStamp(flowDump));	        		
-            }
             //sending flow to server  
-            dout.writeUTF(removeTimeStamp(flowDump));  
+            dout.writeUTF(removeTimeStamp(flowDump)+"bpoint");  
             dout.flush();
-            String s = null;
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            while ((s = stdInput.readLine()) != null) {
-                logger.info(s,"hhh");
-            }
-            BufferedReader errinput = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-            while ((s = errinput.readLine()) != null) {
-                logger.info(s,"hhh");
-            }
         }
         catch(IOException ioe)
         {
