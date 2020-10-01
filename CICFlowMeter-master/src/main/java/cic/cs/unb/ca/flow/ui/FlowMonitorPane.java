@@ -256,14 +256,17 @@ public  class FlowMonitorPane extends JPanel {
         String interfaceToUse = null;
         try
         {
-        	String os_name = System.getProperty("os.name");
-        	if (os_name.toString().contains("Linux")){
-           		p = Runtime.getRuntime().exec("python interface.py ");
-        	}else{
-            	p = Runtime.getRuntime().exec("py interface.py ");        		
-        	}
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            interfaceToUse = stdInput.readLine();
+        	//String os_name = System.getProperty("os.name");
+        	//if (os_name.toString().contains("Linux")){
+           		//p = Runtime.getRuntime().exec("python interface.py ");
+        	//}else{
+            	//p = Runtime.getRuntime().exec("py interface.py ");        		
+        	//}
+            //BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            //interfaceToUse = stdInput.readLine();
+            NetworkInterface nets = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
+            interfaceToUse = nets.toString().split(":")[1].split(" ")[0];
+            System.out.println(interfaceToUse);
         }
         catch(IOException ioe)
         {
