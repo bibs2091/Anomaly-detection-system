@@ -5,6 +5,25 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+    function scan(e){
+      $(e).toggleClass('btntoscan scanning');
+      if($('#scanning').html()=="SCAN NETWORK")
+      {
+      $('#scanning').html("Scanning");
+      $('#ss1').html('');
+      $('#ss2').html('We are inspecting the traffic of your network for any suspicious activity');
+      }
+      else 
+      {
+        $('#ss2').html('');
+      $('#ss1').html('Scan your network for anomalous activities');
+      $('#scanning').html("SCAN NETWORK");
+
+
+      }
+    }
+  </script>
 </head>
 
 <body>
@@ -34,11 +53,14 @@
       </div>
     </nav>
     <div style="position:relative; width: 100%; text-align: center; margin-bottom: 10px; margin-top: 10px;">
-      <b>Scan your network for anomalous activities</b>
+      <b id="ss1">Scan your network for anomalous activities</b>
     </div>
-    <div style="position:relative; width: 100%; text-align: center;">
+    <div style="position:relative; width: 100%; text-align: center;" id="scan-btn">
       
-      <button type="button" class="btn btn-primary btn-circle btn-xl"><b id="scanning">SCAN NETWORK</b></button>
+      <button type="button" class="btn btn-circle btntoscan"  onclick="scan(this)"><b id="scanning">SCAN NETWORK</b></button>
+      <div style="position:relative; width: 100%; text-align: center; margin-bottom: 10px; margin-top: 10px;">
+        <b id="ss2"></b>
+      </div>
     </div>
     
   </div>
@@ -79,14 +101,26 @@
     text-align: center;
   }
 
-  .btn-circle.btn-xl {
+  .scanning {
     width: 30vw;
     height: 30vw;
     border-radius: 50%;
     font-size: 12px;
     text-align: center;
-    border:10px solid blue;
+    border:10px solid black;
     padding: 2px 2px;
+    background-color: yellow;
+
+  }
+  .btntoscan {
+    width: 30vw;
+    height: 30vw;
+    border-radius: 50%;
+    font-size: 12px;
+    text-align: center;
+    border:10px solid black;
+    padding: 2px 2px;
+    background-color: blue;
 
   }
   .btn.active.focus, .btn.active:focus, .btn.focus, .btn.focus:active, .btn:active:focus, .btn:focus {
