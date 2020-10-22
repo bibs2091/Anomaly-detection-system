@@ -13,7 +13,7 @@ if not sys.warnoptions:
 class model:
     def __init__(self):
         #from number to labels
-        self.number_to_label = {1 : "Bot",2 : 'DoS attack',3 : 'Brute Force', 5 : 'DDoS attacks',4 : 'Infilteration',}
+        self.number_to_label = {1 : "Bot",2 : 'DoS attack',3 : 'Brute Force', 5 : 'DDoS attacks',4 : 0}
         # load the pretrained model 
         try:
             self.model = load('./decision_tree_model.joblib')
