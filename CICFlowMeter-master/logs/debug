@@ -231,3 +231,10 @@
 2020-10-22 00:36:38 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 280 flow
 2020-10-22 00:36:38 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 280 flow
 2020-10-22 00:36:43 DEBUG cic.cs.unb.ca.jnetpcap.FlowGenerator    FlagFIN current has 282 flow
+2020-10-22 01:52:03 DEBUG cic.cs.unb.ca.ifm.App    
+2020-10-22 01:56:30 DEBUG cic.cs.unb.ca.ifm.App    
+2020-10-22 02:22:09 DEBUG cic.cs.unb.ca.ifm.App    
+2020-10-22 02:22:17 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    path:C:\Users\Parad0x\Anomaly-detection-system\CICFlowMeter-master\data\daily\0_Flow.csv
+2020-10-22 02:22:17 INFO  cic.cs.unb.ca.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
+2020-10-22 02:28:40 INFO  cic.cs.unb.ca.flow.ui.FlowMonitorPane    path:C:\Users\Parad0x\Anomaly-detection-system\CICFlowMeter-master\data\daily\0_Flow.csv
+2020-10-22 02:28:40 INFO  cic.cs.unb.ca.jnetpcap.worker.TrafficFlowWorker    Pcap is listening...
