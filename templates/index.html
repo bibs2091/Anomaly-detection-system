@@ -6,21 +6,31 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script>
+    (function($) {
+      $.fn.invisible = function() {
+          return this.each(function() {
+              $(this).css("visibility", "hidden");
+          });
+      };
+      $.fn.visible = function() {
+          return this.each(function() {
+              $(this).css("visibility", "visible");
+          });
+      };
+  }(jQuery));
     function scan(e){
       $(e).toggleClass('btntoscan scanning');
-      if($('#scanning').html()=="SCAN NETWORK")
+      if($('#scanning_text').text()=="SCAN NETWORK")
       {
-      $('#scanning').html("Scanning");
-      $('#ss1').html('');
-      $('#ss2').html('We are inspecting the traffic of your network for any suspicious activity');
+        $('#scanning_text').html("Scanning");
+        $('#ss1').visible();
+        $('#ss2').invisible();
       }
       else 
       {
-        $('#ss2').html('');
-      $('#ss1').html('Scan your network for anomalous activities');
-      $('#scanning').html("SCAN NETWORK");
-
-
+        $('#ss2').visible();
+        $('#ss1').invisible();
+        $('#scanning_text').text("SCAN NETWORK");
       }
     }
   </script>
@@ -31,35 +41,34 @@
     <nav class="navbar navbar-default">
       <div class="navbar">
         <ul class="nav nav-pills">
-          <li class="nav-item" style="top: 0.5vw;">
-            <img src="img/shield-svgrepo-com.svg" width="100vw" height="100vw"
-              style="position: relative; right: 0.5vw;">
+          <li class="nav-item" id="logo" style="top: 0.5vw;">
+            <img src="img/logo.svg">
           </li>
-          <li class="nav-item" style=" top: 0.7vw;">
-            <b style="font-size: 4vw;">ESI IDS</b>
+          <li class="nav-item" style="float: right; top: 10px;">
+            <button class="btn">
+              <img src="img/aboutUs.svg" width="25vw" height="25vw">
+              <b href="#" style="font-size: 14px; top: 1vw; "> <span></span>About Us</b>
+            </button>
           </li>
-
-          <li class="nav-item" style="float: right; top: 2.5vw;">
-            <img src="img/c221aee869787e5cd070ee4a13296c05.svg" width="25vw" height="25vw"
-              style="position: relative; bottom: 0.5vw; ">
-            <b href="#" style="font-size: 2vw; top: 1vw; "> <span></span>About Us</b>
-          </li>
-          <li class="nav-item" style="float: right; right: 1vw; top: 2.5vw;">
-            <img src="img/settings-svgrepo-com.svg" width="25vw" height="25vw"
-              style="position: relative; bottom: 0.5vw; ">
-            <b style="font-size: 2vw; top: 1vw;">Settings</b>
+          <li class="nav-item" style="float: right; right: 1vw; top: 10px;">
+            <button class="btn">
+              <img src="img/settings.svg" width="25vw" height="25vw">
+              <b style="font-size: 14px; top: 1vw;">Settings</b>
+            </button>
           </li>
         </ul>
       </div>
     </nav>
-    <div style="position:relative; width: 100%; text-align: center; margin-bottom: 10px; margin-top: 10px;">
+    <div style=" width: 100%; text-align: center; margin-bottom: 10px; margin-top: 10px;">
       <b id="ss1">Scan your network for anomalous activities</b>
     </div>
-    <div style="position:relative; width: 100%; text-align: center;" id="scan-btn">
+    <br>
+    <div style="width: 100%; text-align: center;" id="scan-btn">
       
-      <button type="button" class="btn btn-circle btntoscan"  onclick="scan(this)"><b id="scanning">SCAN NETWORK</b></button>
-      <div style="position:relative; width: 100%; text-align: center; margin-bottom: 10px; margin-top: 10px;">
-        <b id="ss2"></b>
+      <button type="button" class="btn btn-circle btntoscan"  onclick="scan(this)"><b id="scanning_text">SCAN <br> NETWORK</b></button>
+      <br>
+      <div style="width: 100%; text-align: center; margin-bottom: 10px; margin-top: 10px;">
+        <b id="ss2">We are inspecting the traffic of your network for any suspicious activity</b>
       </div>
     </div>
     
@@ -70,13 +79,22 @@
 
 </body>
 <style>
+  @font-face {
+  font-family: ubuntu;
+  src: url("fonts/Ubuntu-Regular.woff");
+}
   body{
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family:ubuntu, sans-serif;
   }
   h1 {
     color: green;
   }
-
+  #logo img{
+    max-width: 150px;
+  }
+  .nav-item .btn{
+    background-color: transparent;
+  }
   .xyz {
     background-size: auto;
     text-align: center;
@@ -102,39 +120,42 @@
   }
 
   .scanning {
-    width: 30vw;
-    height: 30vw;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
-    font-size: 12px;
+    font-size: 21px;
     text-align: center;
-    border:10px solid black;
+    border:10px solid #ffdd59;
     padding: 2px 2px;
-    background-color: yellow;
+    background-color: #ffd32a;
 
   }
   .btntoscan {
-    width: 30vw;
-    height: 30vw;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
-    font-size: 12px;
+    font-size: 21px;
     text-align: center;
-    border:10px solid black;
+    border:10px solid #706FD3;
     padding: 2px 2px;
-    background-color: blue;
+    background-color: #474787;
 
+  }
+  .btn:focus{
+    outline: none!important;
   }
   .btn.active.focus, .btn.active:focus, .btn.focus, .btn.focus:active, .btn:active:focus, .btn:focus {
   outline: thin dotted;
   outline-offset: -2px;
 }
 
-#scanning{
-  font-size: 2vw;
-}
 .navbar-default {
   box-shadow: none;
   background-color: white;
   border-color: white;
+}
+#ss2{
+  visibility:hidden;
 }
 </style>
 
