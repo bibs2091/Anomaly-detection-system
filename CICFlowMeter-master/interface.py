@@ -1,5 +1,5 @@
 import netifaces
 interface = netifaces.gateways()['default'][netifaces.AF_INET][1]
-print(netifaces.gateways())
+print(interface)
 #details about the interface
 #print(netifaces.ifaddresses(interface))
