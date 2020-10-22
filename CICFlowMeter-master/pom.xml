@@ -37,8 +37,14 @@
 		    <artifactId>commons-lang3</artifactId>
 		    <version>3.6</version>
 		</dependency>
-				
-		
+
+		<!-- https://mvnrepository.com/artifact/net.sf.py4j/py4j -->
+		<dependency>
+			<groupId>net.sf.py4j</groupId>
+			<artifactId>py4j</artifactId>
+			<version>0.10.9.1</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-math3</artifactId>

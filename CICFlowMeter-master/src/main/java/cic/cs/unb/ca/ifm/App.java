@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.awt.*;
 import java.io.IOException;
 import java.net.NetworkInterface;
+import py4j.GatewayServer;
 import java.net.SocketException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -27,7 +28,7 @@ public class App {
 	 * Launch the application.
 	 */
 
-	public static void main(String[] args) throws SocketException {
+	public static void main(String[] args) throws IOException {
 		/*try {
 			//UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
@@ -41,6 +42,10 @@ public class App {
 			e1.printStackTrace();
 		}
 		*/
+		FlowMonitorPane app = new FlowMonitorPane();
+		// app is now the gateway.entry_point
+		GatewayServer server = new GatewayServer(app);
+		server.start();
 		FlowMgr flowMgr=new FlowMgr();
 		String rootPath = System.getProperty("user.dir");
 		StringBuilder sb = new StringBuilder(rootPath);

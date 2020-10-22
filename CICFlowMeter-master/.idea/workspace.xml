@@ -5,17 +5,41 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.2/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.2/taskHistory/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/taskHistory/fileSnapshots.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.2/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.2/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/CICFlowMeter-master.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/ifm/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/ifm/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/debug" beforeDir="false" afterPath="$PROJECT_DIR$/logs/debug" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cic/cs/unb/ca/flow/ui/FlowMonitorPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cic/cs/unb/ca/flow/ui/FlowMonitorPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cic/cs/unb/ca/ifm/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cic/cs/unb/ca/ifm/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/flow/FlowMgr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/flow/FlowMgr.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/flow/ui/FlowMonitorPane$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/flow/ui/FlowMonitorPane$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/flow/ui/FlowMonitorPane$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/flow/ui/FlowMonitorPane$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/flow/ui/FlowMonitorPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/flow/ui/FlowMonitorPane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/ifm/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/ifm/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/ifm/ui/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/ifm/ui/MainFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/jnetpcap/FlowGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/jnetpcap/FlowGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/jnetpcap/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/jnetpcap/Utils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/jnetpcap/worker/InsertCsvRow.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/jnetpcap/worker/InsertCsvRow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/swing/common/InsertCsvRow.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/swing/common/InsertCsvRow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/swing/common/JTable2CSVWorker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/swing/common/JTable2CSVWorker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/swing/common/SwingUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/swing/common/SwingUtils.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +69,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1eBASVkoWj0XfcrEYsp225dGb8h" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -58,18 +84,66 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cic.cs.unb.ca.ifm.App" />
-      <module name="CICFlowMeter.main" />
+      <module name="CICFlowMeter-master" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cic.cs.unb.ca.ifm.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="CICFlowMeter" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <module name="CICFlowMeter" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -104,62 +178,38 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="409" y="16" key="#App" timestamp="1599872177326">
+    <state x="409" y="16" key="#App" timestamp="1603318485358">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="409" y="16" key="#App/0.0.1366.728@0.0.1366.728" timestamp="1599872177326" />
-    <state x="137" y="0" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593785500609">
+    <state x="409" y="16" key="#App/0.0.1366.728@0.0.1366.728" timestamp="1603318485358" />
+    <state x="534" y="256" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1603318471523">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="137" y="0" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1593785500609" />
+    <state x="534" y="256" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1603318471523" />
     <state x="193" y="0" key="CommitChangelistDialog2" timestamp="1599872339032">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="193" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1599872339032" />
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1593785103073">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1603318978556">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593785103073" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1593790833573">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1603318978556" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1603318978556">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593790833573" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1593790833573">
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1603318978556" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1603318978556">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1593790833573" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1593790833572">
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1603318978556" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1603318978556">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1593790833572" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1593790833573">
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1603318978556" />
+    <state x="186" y="9" key="SettingsEditor" timestamp="1603318501084">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1593790833573" />
-    <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1593790832710">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="223" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593790832710" />
-    <state width="1323" height="223" key="GridCell.Tab.1.center" timestamp="1593790832710">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="223" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1593790832710" />
-    <state width="1323" height="223" key="GridCell.Tab.1.left" timestamp="1593790832710">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="223" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1593790832710" />
-    <state width="1323" height="223" key="GridCell.Tab.1.right" timestamp="1593790832710">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1593790832710" />
-    <state x="378" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1593785219241">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="378" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1593785219241" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1593787061328">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1593787061328" />
+    <state x="186" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1603318501084" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CICFlowMeter$App.ic" NAME="App Coverage Results" MODIFIED="1593785507564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

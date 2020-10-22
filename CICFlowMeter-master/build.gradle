@@ -29,6 +29,8 @@ dependencies {
     // https://mvnrepository.com/artifact/org.apache.tika/tika-core
     compile group: 'org.apache.tika', name: 'tika-core', version: '1.17'
     compile group: 'jnetpcap', name: 'jnetpcap', version:'1.4.r1425-1g'
+    compile group: 'py4j', name: 'py4j', version:'0.10.9.1'
+
 
 }
 sourceSets {
