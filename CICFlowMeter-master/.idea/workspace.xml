@@ -2,44 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75fbffb7-3da9-41c2-884a-3219bb750a64" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.2/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/fileContent/fileContent.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.2/taskHistory/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/taskHistory/fileSnapshots.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.2/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.2/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.2/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/CICFlowMeter-master.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/flow/ui/FlowMonitorPane.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/ifm/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/cic/cs/unb/ca/ifm/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/debug" beforeDir="false" afterPath="$PROJECT_DIR$/logs/debug" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cic/cs/unb/ca/flow/ui/FlowMonitorPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cic/cs/unb/ca/flow/ui/FlowMonitorPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cic/cs/unb/ca/ifm/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cic/cs/unb/ca/ifm/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/flow/FlowMgr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/flow/FlowMgr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/flow/ui/FlowMonitorPane$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/flow/ui/FlowMonitorPane$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/flow/ui/FlowMonitorPane$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/flow/ui/FlowMonitorPane$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/flow/ui/FlowMonitorPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/flow/ui/FlowMonitorPane.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/ifm/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/ifm/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/ifm/ui/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/ifm/ui/MainFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/jnetpcap/FlowGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/jnetpcap/FlowGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/jnetpcap/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/jnetpcap/Utils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/jnetpcap/worker/InsertCsvRow.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cic/cs/unb/ca/jnetpcap/worker/InsertCsvRow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/swing/common/InsertCsvRow.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/swing/common/InsertCsvRow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/swing/common/JTable2CSVWorker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/swing/common/JTable2CSVWorker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/swing/common/SwingUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/swing/common/SwingUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app.py" beforeDir="false" afterPath="$PROJECT_DIR$/../app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/css/bootstrap-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/css/bootstrap-grid.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/css/bootstrap-grid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/css/bootstrap-grid.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/css/bootstrap-reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/css/bootstrap-reboot.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/css/bootstrap-reboot.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/fonts/UFL.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/fonts/Ubuntu-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/img/aboutUs.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/img/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/img/settings.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/img/shield-svgrepo-com.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/img/shield.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/js/bootstrap.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/js/bootstrap.bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/js/bootstrap.bundle.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/js/bootstrap.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/js/bootstrap.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/js/jquery-3.3.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/js/jquery.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,22 +188,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="193" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1599872339032" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1603318978556">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1603337780987">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1603318978556" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1603318978556">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1603337780987" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1603337780960">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1603318978556" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1603318978556">
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1603337780960" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1603337780951">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1603318978556" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1603318978556">
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1603337780951" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1603337780960">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1603318978556" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1603337780960" />
     <state x="186" y="9" key="SettingsEditor" timestamp="1603318501084">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

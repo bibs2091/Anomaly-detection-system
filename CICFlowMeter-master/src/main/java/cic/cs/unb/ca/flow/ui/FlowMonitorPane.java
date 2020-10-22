@@ -314,7 +314,7 @@ public  class FlowMonitorPane extends JPanel {
 
     }
 
-    private void stopTrafficFlow() {
+    public void stopTrafficFlow() {
         if (mWorker != null) {
             mWorker.cancel(true);
         }

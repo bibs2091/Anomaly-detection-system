@@ -18,22 +18,125 @@
           });
       };
   }(jQuery));
-    function scan(e){
+  function scan(e){
       $(e).toggleClass('btntoscan scanning');
-      if($('#scanning_text').text()=="SCAN NETWORK")
+      if($('#scanning_text').html()=="SCAN <br> NETWORK")
       {
         $('#scanning_text').html("Scanning");
-        $('#ss1').visible();
-        $('#ss2').invisible();
+        $('#ss2').visible();
+        $('#ss1').invisible();
       }
       else 
       {
-        $('#ss2').visible();
-        $('#ss1').invisible();
-        $('#scanning_text').text("SCAN NETWORK");
+        $('#ss1').visible();
+        $('#ss2').invisible();
+        $('#scanning_text').html("SCAN <br> NETWORK");
       }
     }
   </script>
+  <script type=text/javascript>
+          $(function() {
+            $(document).on("click", 'a#start',function(e){
+              $(this).attr("id","stop");
+              e.preventDefault()
+              $.getJSON('/start',
+                  function(data) {
+                //do nothing
+              });
+              return false;
+            });
+          });
+          $(function() {
+            $(document).on("click", 'a#stop',function(e){
+              $(this).attr("id","start");
+              e.preventDefault()
+              $.getJSON('/stop',
+                  function(data) {
+              });
+              return false;
+            });
+          });
+  </script>
+  <style>
+    @font-face {
+    font-family: ubuntu;
+    src: url("/static/fonts/Ubuntu-Regular.woff");
+  }
+    body{
+      font-family:ubuntu, sans-serif;
+    }
+    h1 {
+      color: green;
+    }
+    #logo img{
+      max-width: 150px;
+    }
+    .nav-item .btn{
+      background-color: transparent;
+    }
+    .xyz {
+      background-size: auto;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    .btn-circle.btn-sm {
+      width: 30px;
+      height: 30px;
+      padding: 6px 0px;
+      border-radius: 15px;
+      font-size: 8px;
+      text-align: center;
+    }
+
+    .btn-circle.btn-md {
+      width: 50px;
+      height: 50px;
+      padding: 7px 10px;
+      border-radius: 25px;
+      font-size: 10px;
+      text-align: center;
+    }
+
+    .scanning {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      font-size: 21px;
+      text-align: center;
+      border:10px solid #ffdd59;
+      padding: 2px 2px;
+      background-color: #ffd32a;
+
+    }
+    .btntoscan {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      font-size: 21px;
+      text-align: center;
+      border:10px solid #706FD3;
+      padding: 2px 2px;
+      background-color: #474787;
+
+    }
+    .btn:focus{
+      outline: none!important;
+    }
+    .btn.active.focus, .btn.active:focus, .btn.focus, .btn.focus:active, .btn:active:focus, .btn:focus {
+    outline: thin dotted;
+    outline-offset: -2px;
+  }
+
+  .navbar-default {
+    box-shadow: none;
+    background-color: white;
+    border-color: white;
+  }
+  #ss2{
+    visibility:hidden;
+  }
+  </style>
 </head>
 
 <body>
@@ -42,17 +145,17 @@
       <div class="navbar">
         <ul class="nav nav-pills">
           <li class="nav-item" id="logo" style="top: 0.5vw;">
-            <img src="img/logo.svg">
+            <img src="/static/img/logo.svg">
           </li>
           <li class="nav-item" style="float: right; top: 10px;">
             <button class="btn">
-              <img src="img/aboutUs.svg" width="25vw" height="25vw">
+              <img src="/static/img/aboutUs.svg" width="25vw" height="25vw">
               <b href="#" style="font-size: 14px; top: 1vw; "> <span></span>About Us</b>
             </button>
           </li>
           <li class="nav-item" style="float: right; right: 1vw; top: 10px;">
             <button class="btn">
-              <img src="img/settings.svg" width="25vw" height="25vw">
+              <img src="/static/img/settings.svg" width="25vw" height="25vw">
               <b style="font-size: 14px; top: 1vw;">Settings</b>
             </button>
           </li>
@@ -64,8 +167,11 @@
     </div>
     <br>
     <div style="width: 100%; text-align: center;" id="scan-btn">
-      
-      <button type="button" class="btn btn-circle btntoscan"  onclick="scan(this)"><b id="scanning_text">SCAN <br> NETWORK</b></button>
+      {% if status == "off" %}
+      <a href="#" id="start"><button type="button" class="btn btn-circle btntoscan"  onclick="scan(this)"><b id="scanning_text">SCAN <br> NETWORK</b></button></a>
+      {% else %}
+      <a href="#" id="stop"><button type="button" class="btn btn-circle scanning"  onclick="scan(this)"><b id="scanning_text">Scanning</b></button></a>
+      {% endif %}
       <br>
       <div style="width: 100%; text-align: center; margin-bottom: 10px; margin-top: 10px;">
         <b id="ss2">We are inspecting the traffic of your network for any suspicious activity</b>
@@ -76,87 +182,20 @@
 
 
 
-
+  {% if status == "off" %}
+  <script>
+    $('#ss1').visible();
+    $('#ss2').invisible();
+    console.log("off");
+  </script>
+  {% else %}
+  <script>
+    console.log("on");
+    $('#ss1').invisible();
+    $('#ss2').visible();
+  </script>
+  {% endif %}
 </body>
-<style>
-  @font-face {
-  font-family: ubuntu;
-  src: url("fonts/Ubuntu-Regular.woff");
-}
-  body{
-    font-family:ubuntu, sans-serif;
-  }
-  h1 {
-    color: green;
-  }
-  #logo img{
-    max-width: 150px;
-  }
-  .nav-item .btn{
-    background-color: transparent;
-  }
-  .xyz {
-    background-size: auto;
-    text-align: center;
-    padding-top: 100px;
-  }
 
-  .btn-circle.btn-sm {
-    width: 30px;
-    height: 30px;
-    padding: 6px 0px;
-    border-radius: 15px;
-    font-size: 8px;
-    text-align: center;
-  }
-
-  .btn-circle.btn-md {
-    width: 50px;
-    height: 50px;
-    padding: 7px 10px;
-    border-radius: 25px;
-    font-size: 10px;
-    text-align: center;
-  }
-
-  .scanning {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    font-size: 21px;
-    text-align: center;
-    border:10px solid #ffdd59;
-    padding: 2px 2px;
-    background-color: #ffd32a;
-
-  }
-  .btntoscan {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    font-size: 21px;
-    text-align: center;
-    border:10px solid #706FD3;
-    padding: 2px 2px;
-    background-color: #474787;
-
-  }
-  .btn:focus{
-    outline: none!important;
-  }
-  .btn.active.focus, .btn.active:focus, .btn.focus, .btn.focus:active, .btn:active:focus, .btn:focus {
-  outline: thin dotted;
-  outline-offset: -2px;
-}
-
-.navbar-default {
-  box-shadow: none;
-  background-color: white;
-  border-color: white;
-}
-#ss2{
-  visibility:hidden;
-}
-</style>
 
 </html>
