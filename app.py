@@ -6,6 +6,9 @@ status = 'off'
 
 def create_app(test_config=None):
 	global status
+	global app_get 
+	geteway = JavaGateway()
+	app_get = geteway.entry_point
 	app = Flask(__name__, instance_relative_config=True)
 	@app.route('/',)
 	def index():
@@ -15,22 +18,20 @@ def create_app(test_config=None):
 	@app.route('/start')
 	def start():
 		global status
+		global app_get
 		print("Starting IDS")
 		status = 'on'
-		gateway = JavaGateway()
-		app = gateway.entry_point
-		app.startTrafficFlow()
+		app_get.startTrafficFlow()
 		data = {'status':status}
 		return render_template("index.html",**data)
 
 	@app.route('/stop')
 	def stop():
 		global status
+		global app_get
 		print("Stopping")
 		status = 'off'
-		gateway = JavaGateway()
-		app = gateway.entry_point
-		app.stopTrafficFlow()
+		app_get.stopTrafficFlow()
 		data = {'status':status}
 		return render_template("index.html",**data)
 	
