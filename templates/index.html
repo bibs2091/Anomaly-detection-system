@@ -3,60 +3,7 @@
 <head>
 
   <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-  <script src="/static/js/jquery-3.5.1.min.js"></script>
-  <script src="/static/js/bootstrap.min.js"></script>
-  <script>
-    (function($) {
-      $.fn.invisible = function() {
-          return this.each(function() {
-              $(this).css("visibility", "hidden");  
-          });
-      };
-      $.fn.visible = function() {
-          return this.each(function() {
-              $(this).css("visibility", "visible");
-          });
-      };
-  }(jQuery));
-  function scan(e){
-      $(e).toggleClass('btntoscan scanning');
-      if($('#scanning_text').html()=="SCAN <br> NETWORK")
-      {
-        $('#scanning_text').html("Scanning");
-        $('#ss2').visible();
-        $('#ss1').invisible();
-      }
-      else 
-      {
-        $('#ss1').visible();
-        $('#ss2').invisible();
-        $('#scanning_text').html("SCAN <br> NETWORK");
-      }
-    }
-  </script>
-  <script type=text/javascript>
-          $(function() {
-            $(document).on("click", 'a#start',function(e){
-              $(this).attr("id","stop");
-              e.preventDefault()
-              $.getJSON('/start',
-                  function(data) {
-                //do nothing
-              });
-              return false;
-            });
-          });
-          $(function() {
-            $(document).on("click", 'a#stop',function(e){
-              $(this).attr("id","start");
-              e.preventDefault()
-              $.getJSON('/stop',
-                  function(data) {
-              });
-              return false;
-            });
-          });
-  </script>
+  
   <style>
     @font-face {
     font-family: ubuntu;
@@ -167,11 +114,8 @@
     </div>
     <br>
     <div style="width: 100%; text-align: center;" id="scan-btn">
-      {% if status == "off" %}
-      <a href="#" id="start"><button type="button" class="btn btn-circle btntoscan"  onclick="scan(this)"><b id="scanning_text">SCAN <br> NETWORK</b></button></a>
-      {% else %}
-      <a href="#" id="stop"><button type="button" class="btn btn-circle scanning"  onclick="scan(this)"><b id="scanning_text">Scanning</b></button></a>
-      {% endif %}
+      <button id="scanning" type="button" class="btn btn-circle btntoscan"  onclick="scan(this)">
+        <b id="scanning_text">SCAN <br> NETWORK</b></button>
       <br>
       <div style="width: 100%; text-align: center; margin-bottom: 10px; margin-top: 10px;">
         <b id="ss2">We are inspecting the traffic of your network for any suspicious activity</b>
@@ -181,20 +125,57 @@
   </div>
 
 
+  <script src="/static/js/jquery-3.5.1.min.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+  <script type=text/javascript>
+          var socket = io();
+          socket.on('predection', function(res) {
+            console.log('got the result:',res);
+          });
+  </script>
+  
+  <script>
+    (function($) {
+      $.fn.invisible = function() {
+          return this.each(function() {
+              $(this).css("visibility", "hidden");  
+          });
+      };
+      $.fn.visible = function() {
+          return this.each(function() {
+              $(this).css("visibility", "visible");
+          });
+      };
+  }(jQuery));
+  function scan(e){
+      $(e).toggleClass('btntoscan scanning');
 
-  {% if status == "off" %}
+      if($('#scanning_text').html()=="SCAN <br> NETWORK")
+      {
+        $.post('/start')
+        socket.emit('request_predection')
+        $('#scanning_text').html("Scanning");
+        $('#ss2').visible();
+        $('#ss1').invisible();
+      }
+      else 
+      { 
+        $.post('/stop')
+        socket.emit('stop_predection')
+        $('#ss1').visible();
+        $('#ss2').invisible();
+        $('#scanning_text').html("SCAN <br> NETWORK");
+      }
+    }
+  </script>
+  
+  
   <script>
     $('#ss1').visible();
     $('#ss2').invisible();
-    console.log("off");
   </script>
-  {% else %}
-  <script>
-    console.log("on");
-    $('#ss1').invisible();
-    $('#ss2').visible();
-  </script>
-  {% endif %}
+  
 </body>
 
 

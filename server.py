@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import socket
 from model import model
 
@@ -36,9 +37,7 @@ def server_program():
         # won't accept data packet greater than 2048 bytes
 
         recv = conn.recv(2048)
-        #if client exit
-        if recv == "exit":
-            break
+        
         data = check_flow_return_string(recv)
         if not data:
             # if data is not received break
