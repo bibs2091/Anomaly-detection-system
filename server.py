@@ -32,7 +32,6 @@ def server_program():
 
     server_socket.listen(2)
     conn, address = server_socket.accept()  # accept new connection
-    print("Connection from: " + str(address))
     while True:
         # won't accept data packet greater than 2048 bytes
 

@@ -153,19 +153,19 @@
 
       if($('#scanning_text').html()=="SCAN <br> NETWORK")
       {
-        $.post('/start')
-        socket.emit('request_predection')
+        $.post('/start');
         $('#scanning_text').html("Scanning");
         $('#ss2').visible();
         $('#ss1').invisible();
+        socket.emit('request_predection');
       }
       else 
       { 
-        $.post('/stop')
-        socket.emit('stop_predection')
+        $.post('/stop');
         $('#ss1').visible();
         $('#ss2').invisible();
         $('#scanning_text').html("SCAN <br> NETWORK");
+        socket.emit('stop_predection');
       }
     }
   </script>
