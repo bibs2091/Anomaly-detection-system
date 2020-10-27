@@ -3,6 +3,7 @@ from flask_socketio import SocketIO, emit
 from py4j.java_gateway import JavaGateway
 from pwn import process
 
+
 status = 'off'
 
 # Subtract and return  0 if negative 
@@ -69,7 +70,6 @@ def create_app(test_config=None):
 	@socketio.on('connect')
 	def test_connect():
 		print('client connected')
-		pass
 
 	@socketio.on('disconnect')
 	def test_disconnect(): 

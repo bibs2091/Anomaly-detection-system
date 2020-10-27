@@ -133,6 +133,9 @@
           socket.on('predection', function(res) {
             console.log('got the result:',res);
           });
+          socket.on('disconnect', function(res) {
+            socket.socket.reconnect();
+          });
   </script>
   
   <script>
@@ -148,12 +151,12 @@
           });
       };
   }(jQuery));
-  function scan(e){
+  async function scan(e){
       $(e).toggleClass('btntoscan scanning');
 
       if($('#scanning_text').html()=="SCAN <br> NETWORK")
       {
-        $.post('/start');
+        await $.post('/start');
         $('#scanning_text').html("Scanning");
         $('#ss2').visible();
         $('#ss1').invisible();
@@ -161,7 +164,7 @@
       }
       else 
       { 
-        $.post('/stop');
+        await $.post('/stop');
         $('#ss1').visible();
         $('#ss2').invisible();
         $('#scanning_text').html("SCAN <br> NETWORK");
