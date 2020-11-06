@@ -1,0 +1,118 @@
+@font-face {
+  font-family: ubuntu;
+  src: url("/static/fonts/Ubuntu-Regular.woff");
+}
+
+body {
+  font-family: ubuntu, sans-serif;
+}
+
+h1 {
+  color: green;
+}
+
+#logo img {
+  max-width: 150px;
+}
+
+.nav-item .btn {
+  background-color: transparent;
+}
+
+.xyz {
+  background-size: auto;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.btn-circle.btn-sm {
+  width: 30px;
+  height: 30px;
+  padding: 6px 0px;
+  border-radius: 15px;
+  font-size: 8px;
+  text-align: center;
+}
+
+.btn-circle.btn-md {
+  width: 50px;
+  height: 50px;
+  padding: 7px 10px;
+  border-radius: 25px;
+  font-size: 10px;
+  text-align: center;
+}
+
+.scanning {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  font-size: 21px;
+  text-align: center;
+  border: 10px solid #ffdd59;
+  padding: 2px 2px;
+  background-color: #ffd32a;
+
+}
+
+.btntoscan {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  font-size: 21px;
+  text-align: center;
+  border: 10px solid #706FD3;
+  padding: 2px 2px;
+  background-color: #474787;
+
+}
+
+.btn:focus {
+  outline: none !important;
+}
+
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn.focus:active,
+.btn:active:focus,
+.btn:focus {
+  outline: thin dotted;
+  outline-offset: -2px;
+}
+
+.navbar-default {
+  box-shadow: none;
+  background-color: white;
+  border-color: white;
+}
+
+#ss2 {
+  visibility: hidden;
+}
+.popup {
+  background: rgba(100, 100, 100, 0.5);
+  position: fixed;
+  display: none;
+  z-index: 5000;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+.popup > div {
+  max-width: 600px;
+  width: 70%;
+  position: fixed;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  background: #FFFFFF;
+  padding: 30px;
+  z-index: 5001;
+  text-align: center;
+  border: 5px solid #9AD3DE;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.4);
+}

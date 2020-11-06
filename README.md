@@ -31,7 +31,7 @@ learning based Intrusion detection system(IDS) and it's splitted to two parts:
 ## 4-Running the project
 ### 4.1-Start the model server
 ```
-$ python server.py
+$ python app.py
 ```
 ### 4.2-Start CICFlowMeter
 #### 4.2.1-For Linux

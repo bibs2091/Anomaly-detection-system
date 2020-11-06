@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit
 from py4j.java_gateway import JavaGateway
-from pwn import process
+# from pwn import process
 
 
 status = 'off'
@@ -40,7 +40,7 @@ def create_app(test_config=None):
 
 	req = False
 	# start model_server
-	model_server = process('./server.py')
+	# model_server = process('./server.py')
 	# init javagetway 
 	geteway = JavaGateway()
 	app_get = geteway.entry_point
@@ -78,21 +78,21 @@ def create_app(test_config=None):
 	# start sending predections from model_server to client
 	@socketio.on('request_predection')
 	def request_handle():
-		global model_server
+		# global model_server
 		global req
 		global data
 		req = True
 
-		while req:
+		# while req:
 			# get the results
-			results = model_server.recvline().decode()
+			# results = model_server.recvline().decode()
 			# processing data and modfying it
 			# depending on results
-			data = data_processing(data,results)
-			print(results)
-			print(data)
-			emit('predection', {'result': data})
-			socketio.sleep(2)
+			# data = data_processing(data,results)
+			# print(results)
+			# print(data)
+			# emit('predection', {'result': data})
+			# socketio.sleep(2)
 	
 
 	@socketio.on('stop_predection')
