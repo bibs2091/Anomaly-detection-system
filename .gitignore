@@ -19,3 +19,6 @@ CICFlowMeter-master/logs/info.log
 CICFlowMeter-master/logs/*
 CICFlowMeter-master/.gradle/*/*
 CICFlowMeter-master/.gradle/4.2/fileContent/fileContent.lock
+CICFlowMeter-master/.gradle/buildOutputCleanup/buildOutputCleanup.lock
+CICFlowMeter-master/.gradle/buildOutputCleanup/outputFiles.bin
+CICFlowMeter-master/gradlew
