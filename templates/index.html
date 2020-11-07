@@ -94,9 +94,9 @@
       var maxProp = null
       var maxValue = -1
       for (var prop in res.result) {
-        if (res.result.hasOwnProperty(prop)) {
+        if (res.result.hasOwnProperty(prop) && prop!='0') {
           var value = res.result[prop]
-          if (value > maxValue) {
+          if (value > maxValue ) {
             maxProp = prop
             maxValue = value
           }
@@ -105,6 +105,8 @@
       console.log('MAX Prop ->'+maxProp);
       if (res.result[maxProp]>=5 && maxProp!='0'){
         console.log("ATTACK DETECTED -> "+maxProp);
+        $(".btntoattack").show()
+        $(".scanning").hide()      
       }
     });
     socket.on('disconnect', function(res) {

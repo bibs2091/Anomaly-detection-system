@@ -13,13 +13,13 @@ def Subtract_Unless_0(data):
     return data
 
 def data_processing(data,results):
-    data = Subtract_Unless_0(data)
+    #data = Subtract_Unless_0(data)
     if results == "exit":
         quit()
     else:
         for label in data.keys():
             if label in results:
-                data[label] = min(data[label] + 2,10)
+                data[label] = data[label] + 1
                 break
     return data
 
@@ -108,9 +108,22 @@ def create_app(test_config=None):
         global req
         req = False
         print(req)
-
-
     return [socketio, app]
+
+    @app.route('/reset_traffic',methods=['POST'])
+    def reset_traffic():
+        global data
+    # init attacks percentages 
+        data = {
+            "Bot":0,
+            "DoS attack":0,
+            "Brute Force":0,
+            "DDoS attacks":0,
+            "0":0
+        }
+        print("Data reset!")
+        return 1
+
 if __name__ == '__main__':
     socketio, app = create_app()
     socketio.run(app,host='127.0.0.1', port=7777)
