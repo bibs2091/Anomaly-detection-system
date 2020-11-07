@@ -64,7 +64,25 @@ h1 {
   border: 10px solid #706FD3;
   padding: 2px 2px;
   background-color: #474787;
+}
 
+.btntoattack {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  font-size: 26px;
+  text-align: center;
+  border: 10px solid #CC625C;
+  padding: 2px 2px;
+  background-color: #FF3F34;
+  display: none;
+}
+.btntoattack b{
+  color: white;
+  -webkit-text-stroke: 1px black;
+}
+.btntoattack p{
+  font-size: 17px;
 }
 
 .btn:focus {

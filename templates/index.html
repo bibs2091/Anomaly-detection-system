@@ -37,14 +37,15 @@
     <div style="width: 100%; text-align: center;" id="scan-btn">
       <button id="scanning" type="button" class="btn btn-circle btntoscan" onclick="scan(this)">
         <b id="scanning_text">SCAN <br> NETWORK</b></button>
+      <button type="button" class="btn btn-circle btntoattack" data-toggle="modal" data-target="#attackModal">
+        <b>Suspicious <br> activity  &nbsp;found</b>
+        <p>Click for more infromation</p>
+      </button>
       <br>
       <div style="width: 100%; text-align: center; margin-bottom: 10px; margin-top: 10px;">
         <b id="ss2">We are inspecting the traffic of your network for any suspicious activity</b>
       </div>
     </div>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#attackModal">
-      Launch demo modal
-    </button>
   </div>
 
 <div class="modal fade" id="attackModal" tabindex="-1" role="dialog" aria-labelledby="attackModal" aria-hidden="true">
@@ -67,7 +68,9 @@
             <li>Windows Vista</li>
             <li>DDoS+PortScan</li>
             <li>Windows Vista</li>
-            <li>denial-of-service attack is a cyber-attack in which the perpetrator seeks to make a machine or network resource unavailable to its intended users by temporarily or indefinitely disrupting services of a host connected to the Internet.</li>
+            <li>denial-of-service attack is a cyber-attack in which 
+              the perpetrator seeks to make a machine or network resource unavailable to its intended users by temporarily 
+              or indefinitely disrupting services of a host connected to the Internet.</li>
           </ul>
         </div>
         
@@ -82,20 +85,24 @@
   <script>
     async function scan(e) {
       $(e).toggleClass('btntoscan scanning');
-
       if ($('#scanning_text').html() == "SCAN <br> NETWORK") {
-        await $.post('/start');
+        console.log("hh")
         $('#scanning_text').html("Scanning");
         $('#ss2').visible();
         $('#ss1').invisible();
-        // socket.emit('request_predection');
+        
+        $('#scanning_text').html("SCANNING");
+        await $.post('/start');
+        socket.emit('request_predection');
       } else {
-        await $.post('/stop');
+        console.log("h2h")
         $('#ss1').visible();
         $('#ss2').invisible();
         $('#scanning_text').html("SCAN <br> NETWORK");
-        // socket.emit('stop_predection');
+        await $.post('/stop');
+        socket.emit('stop_predection');
       }
+      if (attack )
     }
   </script>
 </body>

@@ -4,3 +4,4 @@ sklearn
 netifaces
 py4j
 pwn
+flask_socketio

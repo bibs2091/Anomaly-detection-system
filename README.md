@@ -1,7 +1,4 @@
 # Anomaly-detection
-Two parts:
-    - Features extraction
-    - Prediction
 
 ## 1-INTRODUCTION:
 
