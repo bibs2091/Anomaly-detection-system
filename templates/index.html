@@ -108,12 +108,12 @@
         }
       }
       console.log('MAX Prop ->'+maxProp);
-      if (res.result[maxProp]>=10 && maxProp!='0'){
+      if (res.result[maxProp]>=5 && maxProp!='0'){
         console.log("ATTACK DETECTED -> "+maxProp);
         $(".btntoattack").show();
         $(".scanning").hide();
-        $('#attack-type').text() = maxProp;
-        $('#attack-info').text() = attack_infos[maxProp];      
+        $('#attack-type').text(maxProp);
+        $('#attack-info').text(attack_infos[maxProp]);      
         $.post('/reset_traffic');
       }
       // reset traffic when reach 50 for default net
