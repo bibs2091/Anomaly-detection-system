@@ -103,13 +103,17 @@
         }
       }
       console.log('MAX Prop ->'+maxProp);
-      if (res.result[maxProp]>=5 && maxProp!='0'){
+      if (res.result[maxProp]>=10 && maxProp!='0'){
         console.log("ATTACK DETECTED -> "+maxProp);
         $(".btntoattack").show();
         $(".scanning").hide();
         $.post('/reset_traffic');
       }
     });
+      // reset traffic when reach 30 for default net
+      if (res.result[0]>=20){
+        $.post('/reset_traffic');
+      }
     socket.on('disconnect', function(res) {
       socket.socket.reconnect();
     });
