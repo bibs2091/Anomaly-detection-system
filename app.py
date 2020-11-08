@@ -65,12 +65,24 @@ def create_app(test_config=None):
 
     @app.route('/stop',methods=['POST'])
     def stop():
-        
         global app_get
         global status
         status = 'off'
         print("Stopping")
         app_get.stopTrafficFlow()
+        return "0"
+    @app.route('/reset_traffic',methods=['POST'])
+    def reset_traffic():
+        global data
+    # init attacks percentages 
+        print("Data reset!")
+        data = {
+            "Bot":0,
+            "DoS attack":0,
+            "Brute Force":0,
+            "DDoS attacks":0,
+            "0":0
+        }
         return "0"
     # socketio events
     @socketio.on('connect')
@@ -109,20 +121,6 @@ def create_app(test_config=None):
         req = False
         print(req)
     return [socketio, app]
-
-    @app.route('/reset_traffic',methods=['POST'])
-    def reset_traffic():
-        global data
-    # init attacks percentages 
-        data = {
-            "Bot":0,
-            "DoS attack":0,
-            "Brute Force":0,
-            "DDoS attacks":0,
-            "0":0
-        }
-        print("Data reset!")
-        return 1
 
 if __name__ == '__main__':
     socketio, app = create_app()

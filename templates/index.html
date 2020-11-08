@@ -105,8 +105,9 @@
       console.log('MAX Prop ->'+maxProp);
       if (res.result[maxProp]>=5 && maxProp!='0'){
         console.log("ATTACK DETECTED -> "+maxProp);
-        $(".btntoattack").show()
-        $(".scanning").hide()      
+        $(".btntoattack").show();
+        $(".scanning").hide();
+        $.post('/reset_traffic');
       }
     });
     socket.on('disconnect', function(res) {
@@ -140,7 +141,6 @@
       }
     
     }
-    
   </script>
    
 </body>
