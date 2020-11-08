@@ -69,9 +69,9 @@
           </ul>
           <ul class="info_content">
             <li>Windows Vista</li>
-            <li>DDoS+PortScan</li>
+            <li id="attack-type">DDoS+PortScan</li>
             <li>Windows Vista</li>
-            <li>denial-of-service attack is a cyber-attack in which 
+            <li id="attack-info">denial-of-service attack is a cyber-attack in which 
               the perpetrator seeks to make a machine or network resource unavailable to its intended users by temporarily 
               or indefinitely disrupting services of a host connected to the Internet.</li>
           </ul>
@@ -87,6 +87,11 @@
   <script type=text/javascript src="/static/js/script.js"></script>
   <script src="/static/js/d3.min.js"></script>
   <script type=text/javascript>
+    attack_infos = {"Bot" : "test",
+                    "DoS attack" : "test",
+                    "Brute Force" : "test",
+                    "DDoS attacks" : "test",
+    }
     var socket = io();
     socket.on('predection', function(res) {
       console.log('got the result:',res);
@@ -107,13 +112,15 @@
         console.log("ATTACK DETECTED -> "+maxProp);
         $(".btntoattack").show();
         $(".scanning").hide();
+        $('#attack-type').text() = maxProp;
+        $('#attack-info').text() = attack_infos[maxProp];      
+        $.post('/reset_traffic');
+      }
+      // reset traffic when reach 50 for default net
+      if (res.result[0]>=50){
         $.post('/reset_traffic');
       }
     });
-      // reset traffic when reach 30 for default net
-      if (res.result[0]>=20){
-        $.post('/reset_traffic');
-      }
     socket.on('disconnect', function(res) {
       socket.socket.reconnect();
     });
