@@ -56,21 +56,19 @@
       <div class="modal-content">
         <div class="modal-header">
         <img src="/static/img/logo_white.svg">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="location.reload()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <ul class="info_title">
-            <li>Location:</li>
             <li>Type of attack:</li>
             <li>Level of threat:</li>
             <li>Behavior description:</li>
           </ul>
           <ul class="info_content">
-            <li>Windows Vista</li>
             <li id="attack-type">DDoS+PortScan</li>
-            <li>Windows Vista</li>
+            <li id="level-threat">0%</li>
             <li id="attack-info">denial-of-service attack is a cyber-attack in which 
               the perpetrator seeks to make a machine or network resource unavailable to its intended users by temporarily 
               or indefinitely disrupting services of a host connected to the Internet.</li>
@@ -87,10 +85,21 @@
   <script type=text/javascript src="/static/js/script.js"></script>
   <script src="/static/js/d3.min.js"></script>
   <script type=text/javascript>
-    attack_infos = {"Bot" : "test",
-                    "DoS attack" : "test",
-                    "Brute Force" : "test",
-                    "DDoS attacks" : "test",
+    level_threats = {"Bot" :  0,
+                    "DoS attack" : 0,
+                    "Brute Force" : 0,
+                    "DDoS attacks" : 0,
+    }
+    attack_infos = {"Bot" : `A botnet is a number of Internet-connected devices, each of which is running one or more bots. 
+                            Botnets can be used to perform Distributed Denial-of-Service (DDoS) attacks, steal data, send spam, 
+                            and allow the attacker to access the device and its connection. `,
+                    "DoS attack" : `denial-of-service attack is a cyber-attack in which 
+                                    the perpetrator seeks to make a machine or network resource unavailable to its intended users by temporarily 
+                                    or indefinitely disrupting services of a host connected to the Internet.`,
+                    "Brute Force" : `brute-force attack consists of an attacker submitting many passwords or passphrases with the hope of eventually guessing correctly. 
+                                     The attacker systematically checks all possible passwords and passphrases until the correct one is found.`,
+                    "DDoS attacks" : `distributed denial-of-service attack, the incoming traffic flooding the victim originates from many different sources. 
+                                      This effectively makes it impossible to stop the attack simply by blocking a single source.`,
     }
     var socket = io();
     socket.on('predection', function(res) {
@@ -110,10 +119,13 @@
       console.log('MAX Prop ->'+maxProp);
       if (res.result[maxProp]>=5 && maxProp!='0'){
         console.log("ATTACK DETECTED -> "+maxProp);
+        //adding level threats where max is 100%
+        level_threats[maxProp] = Math.min(level_threats[maxProp] + 10,100); 
         $(".btntoattack").show();
         $(".scanning").hide();
         $('#attack-type').text(maxProp);
-        $('#attack-info').text(attack_infos[maxProp]);      
+        $('#attack-info').text(attack_infos[maxProp]);  
+        $('#level-threat').text(level_threats[maxProp]+'%');     
         $.post('/reset_traffic');
       }
       // reset traffic when reach 50 for default net
