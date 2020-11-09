@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_socketio import SocketIO, emit
 from py4j.java_gateway import JavaGateway
 from pwn import process
-
+import json
 
 status = 'off'
 
@@ -51,7 +51,18 @@ def create_app(test_config=None):
 
     @app.route('/',)
     def index():
-        data = {"status":status}
+        global status
+        global app_get
+        f = open('config.json','r')
+        config = json.load(f)
+        if config['auto-start']==1:
+            status = 'on'
+            print("Starting IDS")
+            app_get.startTrafficFlow()
+        data = {"status":status,
+                "auto_start":config["auto-start"],
+                "level_threat":config["level-threat"],
+                "reset_level":config["reset-level"]}
         return render_template("index.html",**data)
 
     @app.route('/start',methods=['POST'])
@@ -89,6 +100,16 @@ def create_app(test_config=None):
             "0":0
         }
         return "0"
+    
+    @app.route('/update_settings',methods=['GET','POST'])
+    def update_settings():
+        data = request.get_json()
+        f = open('config.json','w')
+        print(data)
+        json.dump(data,f)
+        f.close()
+        return jsonify(status="success")
+    
     # socketio events
     @socketio.on('connect')
     def test_connect():
