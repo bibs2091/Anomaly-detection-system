@@ -110,31 +110,31 @@ h1 {
 }
 
 
-#attackModal .modal-header{
+.attackModal .modal-header{
   background-color: #474787;
   border-top: 5px solid #706FD3;
   border-radius: 0;
 }
-#attackModal .info_title{
+.attackModal .info_title{
   padding-left: 45px;
   width: 40%;
   vertical-align: top;
   display: inline-block;
 }
-#attackModal .info_content{
+.attackModal .info_content{
   width: 57%;
   vertical-align: top;
   display: inline-block;
   padding: 0;
 
 }
-#attackModal .info_title li{
+.attackModal .info_title li{
   list-style-type: none;
   line-height: 45px;
   font-size: 20px;
   font-weight: bold;
 }
-#attackModal .info_content li{
+.attackModal .info_content li{
   list-style-type: none;
   line-height: 45px;
   font-size: 18px;
@@ -143,3 +143,60 @@ h1 {
   padding-top: 50px;
   padding-bottom: 50px;
 }
+.form-switch {
+  display: inline-block;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.form-switch i {
+  position: relative;
+  display: inline-block;
+  margin-right: .5rem;
+  width: 46px;
+  height: 26px;
+  background-color: #e6e6e6;
+  border-radius: 23px;
+  vertical-align: text-bottom;
+  transition: all 0.3s linear;
+}
+
+.form-switch i::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 42px;
+  height: 22px;
+  background-color: #fff;
+  border-radius: 11px;
+  transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
+  transition: all 0.25s linear;
+}
+
+.form-switch i::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  background-color: #fff;
+  border-radius: 11px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24);
+  transform: translate3d(2px, 2px, 0);
+  transition: all 0.2s ease-in-out;
+}
+
+.form-switch:active i::after {
+  width: 28px;
+  transform: translate3d(2px, 2px, 0);
+}
+
+.form-switch:active input:checked + i::after { transform: translate3d(16px, 2px, 0); }
+
+.form-switch input { display: none; }
+
+.form-switch input:checked + i { background-color: #fd2104; }
+
+.form-switch input:checked + i::before { transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0); }
+
+.form-switch input:checked + i::after { transform: translate3d(22px, 2px, 0); }
