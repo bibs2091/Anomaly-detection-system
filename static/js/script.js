@@ -1,11 +1,3 @@
-var socket = io();
-socket.on('predection', function (res) {
-    console.log('got the result:', res);
-});
-socket.on('disconnect', function (res) {
-    socket.socket.reconnect();
-});
-
 (function ($) {
     $.fn.invisible = function () {
         return this.each(function () {

@@ -112,6 +112,7 @@
               the perpetrator seeks to make a machine or network resource unavailable to its intended users by
               temporarily
               or indefinitely disrupting services of a host connected to the Internet.</li>
+              <li><a id="info-link" href="#">What is the solution?</a></li>
           </ul>
         </div>
 
@@ -165,7 +166,8 @@
         $(".scanning").hide();
         $('#attack-type').text(maxProp);
         $('#attack-info').text(attack_infos[maxProp]);  
-        $('#level-threat').text(level_threats[maxProp]+'%');     
+        $('#level-threat').text(level_threats[maxProp]+'%');
+        $('#info-link').attr('href','/info/'+maxProp);     
         $.post('/reset_traffic');
       }
       // reset traffic when reach 50 for default net
@@ -173,9 +175,10 @@
         $.post('/reset_traffic');
       }
     });
+    /*
     socket.on('disconnect', function(res) {
       socket.socket.reconnect();
-    });
+    });*/
     var status = '{{ status }}'; 
     if (status=='off'){
       $('#ss1').visible();

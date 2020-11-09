@@ -71,6 +71,11 @@ def create_app(test_config=None):
         print("Stopping")
         app_get.stopTrafficFlow()
         return "0"
+    
+    @app.route('/info/<attack>',)
+    def info(attack):
+        return render_template(f"{attack}.html")
+    
     @app.route('/reset_traffic',methods=['POST'])
     def reset_traffic():
         global data
