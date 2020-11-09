@@ -14,13 +14,6 @@ def check_flow_return_string(recv):
             data += chr(i)
     return data
 
-def load_and_predict(data):
-    #break the concatinated flows
-    #and predict for each one
-    for d in data.split("bpoint"):
-        if d != '' and len(d.split(',')) == 83:
-            m.load_data(d)
-            prediction = m.predict()
 
 def server_program():
     
@@ -32,16 +25,24 @@ def server_program():
 
     server_socket.listen(2)
     conn, address = server_socket.accept()  # accept new connection
+    data = [] #list of recieved data
     while True:
         # won't accept data packet greater than 2048 bytes
 
         recv = conn.recv(2048)
         
-        data = check_flow_return_string(recv)
-        if not data:
-            # if data is not received break
+        data_temp = check_flow_return_string(recv)
+        if not data_temp:
+            # if data_temp is not received break
             break
-        load_and_predict(data)
+        data.append(data_temp) #append the recieved data to data list
+
+        #check if we recived x number of data
+        if (len(data) == 10): 
+            m.load_data(''.join(data)) #concat into one string
+            m.predict()
+            data = [] #clear list
+        
         #conn.send(str(prediction).encode())
     conn.close() 
 

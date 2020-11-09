@@ -57,10 +57,10 @@ class model:
 
         self.data = self.preprocess(self.data)
 
-    def load_data(self, rows = "192.168.1.3-140.82.118.4-65394-443-6,192.168.1.3,65394,140.82.118.4,443,6,678,4,1,24.0,24.0,24.0,0.0,6.0,12.0,24.0,24.0,24.0,0.0,70796.46017699115,7374.6312684365785,169.5,151.22720213859233,385.0,50.0,678.0,226.0,185.47506570965274,435.0,81.0,0,0,0,0,0,0,0,0,0,80,20,5899.705014749263,1474.9262536873157,0.0,24.0,8.0,12.393546707863734,153.6,1,0,0,2,5,0,0,0,0.0,9.6,6.0,24.0,0,0,0,0,0,0,0,4,0,4,68,70,1,20,0,0,0,0,1.5940385198503995E15,351.4320702497141,1.594038519850648E15,1.594038519850151E15,NeedManualLabel") :
+    def load_data(self, rows) :
         #Load and preprocess strings in csv format 
-        columns = open("./all_features.txt", "r").readline().split(',')
-        self.data =pd.DataFrame([x.split(',') for x in rows.split('\n')],columns = columns)
+        columns = self.features
+        self.data =pd.DataFrame([x.split(',') for x in rows.split('bpoint')],columns = columns)
         self.data = self.preprocess(self.data)
 
     def predict(self):
