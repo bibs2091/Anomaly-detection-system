@@ -53,7 +53,7 @@ import java.io.DataOutputStream;
 
 public  class FlowMonitorPane extends JPanel {
     protected static final Logger logger = LoggerFactory.getLogger(FlowMonitorPane.class);
-
+    private int count = 0;
     private Socket s;  
     private DataOutputStream dout;
     private JTable flowTable;
@@ -341,6 +341,8 @@ public  class FlowMonitorPane extends JPanel {
         try
         {
             //sending flow to server
+            count = count + 1;
+            System.out.println(count);
             dout.writeUTF(removeTimeStamp(flowDump)+"bpoint");  
             dout.flush();
         }

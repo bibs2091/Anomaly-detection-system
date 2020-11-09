@@ -25,7 +25,8 @@ def server_program():
 
     server_socket.listen(2)
     conn, address = server_socket.accept()  # accept new connection
-    data = [] #list of recieved data
+    data = '' #list of recieved data
+    count = 0
     while True:
         # won't accept data packet greater than 2048 bytes
 
@@ -35,14 +36,21 @@ def server_program():
         if not data_temp:
             # if data_temp is not received break
             break
-        data.append(data_temp) #append the recieved data to data list
-
+        data += str(data_temp) #append the recieved data to data list
+        count += 1
         #check if we recived x number of data
-        if (len(data) == 10): 
-            m.load_data(''.join(data)) #concat into one string
-            m.predict()
-            data = [] #clear list
-        
+        if (count == 10):
+            try:
+                m.load_data(data) #concat into one string
+                m.predict()
+                data = '' #clear list
+                count = 0
+            except Exception as e:
+                print(e)
+                print("------------")
+                print(data)
+                print("------------")
+                pass
         #conn.send(str(prediction).encode())
     conn.close() 
 

@@ -25,8 +25,8 @@ class model:
 
         # load the features for the preprocessing step
         try:
-            self.features = open("./all_features.txt", "r").readline().split(',')
-            
+            self.all_features = open("./all_features.txt", "r").readline().split(',')
+            self.features = open("./features.txt", "r").read().splitlines()
         except:
             # error if features file can't be found in the path
             logging.error("features.txt can\'t be found in the main directory")
@@ -57,7 +57,7 @@ class model:
 
     def load_data(self, rows) :
         #Load and preprocess strings in csv format 
-        self.data =pd.DataFrame([x.split(',') for x in rows.split('bpoint')],columns = self.features)
+        self.data =pd.DataFrame([x.split(',') for x in rows.strip('bpoint').split('bpoint')],columns = self.all_features)
         self.data = self.preprocess(self.data)
 
     def predict(self):
