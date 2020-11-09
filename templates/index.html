@@ -58,7 +58,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <img src="/static/img/logo_white.svg">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="location.reload()">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -126,6 +126,9 @@
   <script type=text/javascript src="/static/js/script.js"></script>
   <script src="/static/js/d3.min.js"></script>
   <script type=text/javascript>
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
     function update_settings() {
       console.log("update settings");
       var autostart_toggle = 0;
@@ -150,6 +153,7 @@
         success: function (res) {
             console.log(res);
             console.log("Response-> "+ res.status);
+            location.reload();
         }
     });  
     }
@@ -223,7 +227,12 @@
     }else {
       $('#ss1').invisible();
       $('#ss2').visible();
-      socket.emit('request_predection');
+      $.post('/stop');
+      socket.emit('stop_predection');
+      sleep(1000).then(() => {
+        $.post('/start');
+        socket.emit('request_predection');
+      }); 
     }
     async function scan(e) {
       $(e).toggleClass('btntoscan scanning');
