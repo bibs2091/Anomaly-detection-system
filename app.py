@@ -137,7 +137,7 @@ def create_app(test_config=None):
                 print(results)
                 print(data)
                 emit('predection', {'result': data})
-                socketio.sleep(1)
+                # socketio.sleep(1)
             except:
                 pass
 
