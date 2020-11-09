@@ -1,5 +1,1 @@
-{
-    "auto-start" : 0,
-    "level-threat" : 0,
-    "reset-level" : 0
-}
+{"auto-start": 0, "level-threat": "5", "reset-level": "50"}

@@ -84,7 +84,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger" onclick="update_settings()">Save</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close" onclick="update_settings()">Save</button>
         </div>
       </div>
     </div>
@@ -149,11 +149,13 @@
         contentType: "application/json",
         success: function (res) {
             console.log(res);
-            console.log("Response-> "+ res.id);
+            console.log("Response-> "+ res.status);
         }
     });  
     }
-
+    var autostart_toggle = {{ auto_start }};
+    var levelofthreat = {{ level_threat }};
+    var resetlevel = {{ reset_level }};
     level_threats = {"Bot" :  0,
                     "DoS attack" : 0,
                     "Brute Force" : 0,
@@ -169,6 +171,13 @@
                                      The attacker systematically checks all possible passwords and passphrases until the correct one is found.`,
                     "DDoS attacks" : `distributed denial-of-service attack, the incoming traffic flooding the victim originates from many different sources. 
                                       This effectively makes it impossible to stop the attack simply by blocking a single source.`,
+    }
+    $("#levelofthreat").val(levelofthreat);
+    $("#resetlevel").val(resetlevel);
+    if (autostart_toggle==0){
+      $('#autostart-toggle').prop("checked", false);
+    }else{
+      $('#autostart-toggle').prop("checked", true);
     }
     var socket = io();
     socket.on('predection', function(res) {
@@ -186,7 +195,7 @@
         }
       }
       console.log('MAX Prop ->'+maxProp);
-      if (res.result[maxProp]>=5 && maxProp!='0'){
+      if (res.result[maxProp]>=levelofthreat && maxProp!='0'){
         console.log("ATTACK DETECTED -> "+maxProp);
         //adding level threats where max is 100%
         level_threats[maxProp] = Math.min(level_threats[maxProp] + 10,100); 
@@ -199,7 +208,7 @@
         $.post('/reset_traffic');
       }
       // reset traffic when reach 50 for default net
-      if (res.result[0]>=50){
+      if (res.result[0]>=resetlevel){
         $.post('/reset_traffic');
       }
     });
