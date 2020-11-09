@@ -269,9 +269,10 @@ public  class FlowMonitorPane extends JPanel {
             */
             System.out.println(interfaceToUse);
         }
-        catch(IOException ioe)
+        catch(Exception e)
         {
-            ioe.printStackTrace();
+            System.out.println("Check command to run the interface script");
+            e.printStackTrace();
         }
         for(int i = 0; i< list.getModel().getSize();i++) {
             o=list.getModel().getElementAt(i);
@@ -339,7 +340,7 @@ public  class FlowMonitorPane extends JPanel {
         Process p;
         try
         {
-            //sending flow to server  
+            //sending flow to server
             dout.writeUTF(removeTimeStamp(flowDump)+"bpoint");  
             dout.flush();
         }
