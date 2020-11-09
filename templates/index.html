@@ -73,18 +73,18 @@
           </ul>
           <ul class="info_content">
             <li><label class="form-switch">
-                <input type="checkbox">
+                <input type="checkbox" id="autostart-toggle">
                 <i></i>
               </label></li>
             <li style="margin-bottom: 5px;"><input type="number" class="form-control col-sm-2 col-form-label" id="levelofthreat"
                 placeholder="0"></li>
-            <li><input type="number" class="form-control col-sm-2 col-form-label" id="levelofthreat"
+            <li><input type="number" class="form-control col-sm-2 col-form-label" id="resetlevel"
                 placeholder="0"></li>
           </ul>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger">Save</button>
+          <button type="button" class="btn btn-danger" onclick="update_settings()">Save</button>
         </div>
       </div>
     </div>
@@ -126,6 +126,34 @@
   <script type=text/javascript src="/static/js/script.js"></script>
   <script src="/static/js/d3.min.js"></script>
   <script type=text/javascript>
+    function update_settings() {
+      console.log("update settings");
+      var autostart_toggle = 0;
+      if ($('#autostart-toggle').is(":checked"))
+      {
+        autostart_toggle = 1;
+      }
+      var levelofthreat = $("#levelofthreat").val();
+      var resetlevel = $("#resetlevel").val();
+      console.log(autostart_toggle);
+      console.log(levelofthreat);
+      console.log(resetlevel);
+      $.ajax({
+        type: "POST",
+        url: "/update_settings",
+        data: JSON.stringify({'auto-start': autostart_toggle, 
+                              'level-threat': levelofthreat,
+                              'reset-level': resetlevel
+        }),
+        dataType: 'JSON',
+        contentType: "application/json",
+        success: function (res) {
+            console.log(res);
+            console.log("Response-> "+ res.id);
+        }
+    });  
+    }
+
     level_threats = {"Bot" :  0,
                     "DoS attack" : 0,
                     "Brute Force" : 0,

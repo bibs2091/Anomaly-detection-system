@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_socketio import SocketIO, emit
 from py4j.java_gateway import JavaGateway
 from pwn import process
@@ -89,6 +89,14 @@ def create_app(test_config=None):
             "0":0
         }
         return "0"
+    
+    @app.route('/update_settings',methods=['GET','POST'])
+    def update_settings():
+        data = request.get_json()
+        print(data)
+        aa = {"id":5}
+        return jsonify(aa)
+    
     # socketio events
     @socketio.on('connect')
     def test_connect():
