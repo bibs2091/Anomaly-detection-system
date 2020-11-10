@@ -30,6 +30,7 @@ def create_app(test_config=None):
     global model_server
     global req
     global data
+    global config
     # init attacks percentages 
     data = {
     "Bot":0,
@@ -41,21 +42,21 @@ def create_app(test_config=None):
 
     req = False
     # start model_server
-    model_server = process('./server.py')
+    #model_server = process('./server.py')
     # init javagetway 
     geteway = JavaGateway()
     app_get = geteway.entry_point
     # init flask up
     app = Flask(__name__, instance_relative_config=True)
     socketio = SocketIO(app, logger=True)
-
+    f = open('config.json','r')
+    config = json.load(f)
 
     @app.route('/',)
     def index():
         global status
         global app_get
-        f = open('config.json','r')
-        config = json.load(f)
+        global config
         if config['auto-start']==1:
             status = 'on'
             print("Starting IDS")
@@ -116,10 +117,20 @@ def create_app(test_config=None):
     @app.route('/post-predict',methods=['POST'])
     def postpredict():
         global data
+        global reset
+        global config
         received = request.get_json() 
+        delta = reset*int(config['reset-level'])
         print("Data received!")
-        data.clear()
-        data = received
+        for key in received:
+            if int(received[key]) > delta:
+                print("CONTINUE")
+                print("Received->",received)
+                print("Data->",data)
+                continue
+            data[key] = received[key] - delta
+        #data.clear()
+        #data = received
         print(data)
         return "1"
     

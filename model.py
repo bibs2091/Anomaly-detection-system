@@ -57,26 +57,28 @@ class model:
 
     def load_data(self, rows) :
         #Load and preprocess strings in csv format 
-        self.data =pd.DataFrame([x.split(',') for x in rows.strip('bpoint').split('bpoint')],columns = self.all_features)
+        self.data =pd.DataFrame([x.strip(',').split(',') for x in rows.strip('bpoint').split('bpoint')],columns = self.all_features)
         self.data = self.preprocess(self.data)
 
     def predict(self):
+        results = []
         #predict the class of the flow
         self.prediction = self.model.predict(self.data).astype('int32')
         #in case of one row prediction
         if (self.prediction.shape[0] == 1 ):
             if (self.prediction.item() == 1):
-                return (self.number_to_label[self.attack_model.predict(self.data[0,:].reshape(1, -1)).item()])
+                results.append(self.number_to_label[self.attack_model.predict(self.data[0,:].reshape(1, -1)).item()])
             else:
-                return (0)
+                results.append(0)
                 
         else:
             for i in range(self.prediction.shape[0]):
                 if (self.prediction[i] == 1):
-                    return (self.number_to_label[self.attack_model.predict(self.data[i,:].reshape(1, -1)).item()])
+                    results.append(self.number_to_label[self.attack_model.predict(self.data[i,:].reshape(1, -1)).item()])
                 else:
-                    return (0)
-
+                    results.append(0)
+        return results
+    
     def accuracy(self):
         #calculate accuracy in case of label availaiblity
         if (self.label is None):
