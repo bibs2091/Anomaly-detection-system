@@ -1,1 +1,82 @@
-bruteforce
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Brute Force Attack</title>
+</head>
+
+<body style="background-color:#e3e3eb;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="text-align: center;color: #20206d;">Brute Force Attack</h1>
+                <p style="font-size: larger;">
+                    A brute force attack uses trial-and-error to guess login info, encryption keys, or find a hidden web
+                    page. Hackers work through all possible combinations hoping to guess correctly.
+
+                    These attacks are done by ‘brute force’ meaning they use excessive forceful attempts to try and
+                    ‘force’ their way into your private account(s).
+
+                    This is an old attack method, but it's still effective and popular with hackers. Because depending
+                    on the length and complexity of the password, cracking it can take anywhere from a few seconds to
+                    many years.</p>
+                <div style="text-align: center;"><img src="./../static/img/bruteforce.png" height="300px" width="600px">
+                </div>
+                <h4 style="color: #20206d;"><b>Symptoms of Brute Force Attacks</b></h4>
+                <ul style="font-size: larger;">
+                    <li>Logins with multiple username attempts emerging from the same IP address.</li>
+                    <li>Logins for a single account coming from many different IP addresses.</li>
+                    <li>Excessive bandwidth consumption over the course of a single session.</li>
+                    <li>Failed login attempts from alphabetically sequential usernames or passwords.</li>
+                    <li>Failed login attempts that include passwords commonly used by users and hackers alike (123456,
+                        password, qwerty, pwnyou, etc.)</li>
+                </ul>
+                <h4 style="color: #20206d;"><b>How to defend your machine against Brute Force attacks</b></h4>
+                <ul>
+                    <li><b>High encryption rates: to make it harder for brute force attacks to succeed, system
+                            administrators should ensure that passwords for their systems are encrypted with the highest
+                            encryption rates possible, such as 256-bit encryption. The more bits in the encryption
+                            scheme, the harder the password is to crack.</li>
+                    <br>
+                    <li><b>Salt the hash: administrators should also randomize password hashes by adding a random string
+                            of letters and numbers (called salt) to the password itself. This string should be stored in
+                            a separate database and retrieved and added to the password before it's hashed. By salting
+                            the hash, users with the same password have different hashes.
+
+                    </li>
+                    <br>
+                    <li>Two-factor authentication (2FA): additionally, administrators can require two-step
+                        authentication and install an intrusion detection system that detects brute force attacks. This
+                        requires users to follow-up a login attempt with a second factor, like a physical USB key or
+                        fingerprint biometrics scan.
+
+                    </li><br>
+                    <li><b>Method 4: Investigate black hole routing</b><br>
+                        nternet service providers can use “black hole routing.” It directs excessive traffic into a null
+                        route, sometimes referred to as a black hole. This can help prevent the targeted website or
+                        network from crashing. The drawback is that both legitimate and illegitimate traffic is rerouted
+                        in the same way.</li><br>
+                    <li>Two-factor authentication (2FA): additionally, administrators can require two-step
+                        authentication and install an intrusion detection system that detects brute force attacks. This
+                        requires users to follow-up a login attempt with a second factor, like a physical USB key or
+                        fingerprint biometrics scan.
+
+
+                    </li>
+                    <br>
+                    <li>
+                        Account lockdown after excessive login attempts: if a hacker can endlessly keep retrying
+                        passwords even after a temporary lockout, they can return to try again. Locking the account
+                        and requiring the user to contact IT for an unlock will deter this activity. Short lockout
+                        timers are more convenient for users, but convenience can be a vulnerability. To balance
+                        this, you might consider using the long-term lockdown if there are excessive failed logins
+                        after the short one. </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
