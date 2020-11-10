@@ -84,7 +84,7 @@ public  class FlowMonitorPane extends JPanel {
         add(initCenterPane());
         //open connection to server
         try{
-        s=new Socket("localhost",5000);  
+        s=new Socket("0.0.0.0",5000);  
         dout=new DataOutputStream(s.getOutputStream());
         }catch(Exception e){System.out.println(e);}
         //
@@ -256,32 +256,22 @@ public  class FlowMonitorPane extends JPanel {
         String interfaceToUse = null;
         try
         {
-        	//String os_name = System.getProperty("os.name");
-        	//if (os_name.toString().contains("Linux")){
-            p = Runtime.getRuntime().exec("python interface.py ");
-        	//}else{
-            	//p = Runtime.getRuntime().exec("py interface.py ");        		
-        	//}
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            interfaceToUse = stdInput.readLine();
-            /*NetworkInterface nets = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
-            interfaceToUse = nets.toString().split(":")[1].split(" ")[0];
-            */
-            System.out.println(interfaceToUse);
+        	try 
+            (BufferedReader br = new BufferedReader(new FileReader(new File("./interface")))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                 interfaceToUse = line;
+                }
+            }
         }
         catch(Exception e)
         {
             System.out.println("Check command to run the interface script");
             e.printStackTrace();
         }
-        for(int i = 0; i< list.getModel().getSize();i++) {
-            o=list.getModel().getElementAt(i);
-           if(o.toString().contains("any") || o.toString().contains(interfaceToUse)) {
-                list.setSelectedIndex(i);
-                break;
-            }
-        }
-        String ifName = list.getSelectedValue().name();
+        System.out.println(interfaceToUse);
+        
+        String ifName = interfaceToUse.replace("\n", "").replace("\r", "");
         if (mWorker != null && !mWorker.isCancelled()) {
             return;
         }

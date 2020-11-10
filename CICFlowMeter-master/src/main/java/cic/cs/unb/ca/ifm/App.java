@@ -44,7 +44,11 @@ public class App {
 		*/
 		FlowMonitorPane app = new FlowMonitorPane();
 		// app is now the gateway.entry_point
-		GatewayServer server = new GatewayServer(app);
+		GatewayServer server = new GatewayServer.GatewayServerBuilder()
+					.entryPoint(app)
+					.javaPort(25333)
+					.javaAddress(InetAddress.getByName("0.0.0.0"))
+					.build();
 		server.start();
 		FlowMgr flowMgr=new FlowMgr();
 		String rootPath = System.getProperty("user.dir");
