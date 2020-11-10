@@ -7,6 +7,8 @@ import json
 status = 'off'
 #if data reset
 reset = 0
+reset_boolean = False
+
 # Subtract and return  0 if negative 
 def Subtract_Unless_0(data):
     for i in data.keys():
@@ -42,7 +44,7 @@ def create_app(test_config=None):
 
     req = False
     # start model_server
-    model_server = process('./server.py')
+    #model_server = process('./server.py')
     # init javagetway 
     geteway = JavaGateway()
     app_get = geteway.entry_point
@@ -93,7 +95,9 @@ def create_app(test_config=None):
     def reset_traffic():
         global data
         global reset
+        global reset_boolean
         reset += 1
+        reset_boolean = True
     # init attacks percentages 
         print("Data reset!")
         data.clear()
@@ -127,14 +131,25 @@ def create_app(test_config=None):
         print("Data received!")
         for key in received:
             data[key] = received[key]
-        if reset>0:
+        '''if reset>0:
               for key in data:
                   data[key] = data[key] % int(config['reset-level'])
+        '''
         #data.clear()
-        #data = received
         print(data)
         return "1"
     
+    @app.route('/reset_status',methods=['GET','POST'])
+    def reset_status():
+        global reset_boolean
+        if request.method == 'POST':
+            print("Posttt")
+            reset_boolean = False
+            print("Status reset ",reset_traffic)
+            return '1'
+        else:
+            return jsonify(reset_boolean=str(reset_boolean))
+        
     # socketio events
     @socketio.on('connect')
     def test_connect():
