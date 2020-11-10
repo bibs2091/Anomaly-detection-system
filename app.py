@@ -96,6 +96,7 @@ def create_app(test_config=None):
         reset += 1
     # init attacks percentages 
         print("Data reset!")
+        data.clear()
         data = {
             "Bot":0,
             "DoS attack":0,

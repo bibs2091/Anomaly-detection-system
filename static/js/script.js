@@ -47,6 +47,10 @@ $(document).ready(function () {
         popupOpenClose($(".popup"));
     });
 });
+//function to reset traffic
+function reset_traffic(){
+    $.post('/reset_traffic');
+}
 //function to update the settings in config.json
 function update_settings() {
     console.log("update settings");
@@ -141,11 +145,11 @@ async function scan(e) {
       $('#attack-info').text(attack_infos[maxProp]);  
       $('#level-threat').text(level_threats[maxProp]+'%');
       $('#info-link').attr('href','/info/'+maxProp);     
-      $.post('/reset_traffic');
+      reset_traffic();
     }
     // reset traffic when reach 200 for default net
     if (res.result[0]>=resetlevel){
-      $.post('/reset_traffic');
+      reset_traffic();
     }
   }); 
   if (status=='off'){

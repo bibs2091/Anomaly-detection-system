@@ -53,7 +53,7 @@ def server_program():
         data_temp = check_flow_return_string(recv)
         if not data_temp:
             # if data_temp is not received break
-            break
+            continue
         data += str(data_temp) #append the recieved data to data list
         count += 1
         #check if we recived x number of data
@@ -74,7 +74,7 @@ def server_program():
                 print("------------")
                 pass
         #conn.send(str(prediction).encode())
-    conn.close() 
+    #conn.close() 
 
 
 if __name__ == '__main__':
