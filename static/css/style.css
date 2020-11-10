@@ -18,7 +18,10 @@ h1 {
 #logo img {
   max-width: 150px;
 }
-
+.navbar{
+  height: 75px;
+  background: #474787!important;
+}
 .nav-item .btn {
   background-color: transparent;
 }
