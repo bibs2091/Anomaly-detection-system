@@ -64,7 +64,7 @@ def server_program():
                 print(results)
                 predicted_results = data_processing(predicted_results,results)
                 print(predicted_results)
-                req = requests.get('http://127.0.0.1:7777/reset_status')
+                req = requests.get('http://0.0.0.0:7777/reset_status')
                 reset_details = req.json()
                 print(reset_details)
                 print(reset_details['reset_boolean'],type(reset_details['reset_boolean']))
@@ -77,8 +77,8 @@ def server_program():
                         "DDoS attacks":0,
                         "0":0
                         }
-                    requests.post('http://127.0.0.1:7777/reset_status')
-                requests.post('http://127.0.0.1:7777/post-predict',json=predicted_results)
+                    requests.post('http://0.0.0.0:7777/reset_status')
+                requests.post('http://0.0.0.0:7777/post-predict',json=predicted_results)
                 data = '' #clear list
                 count = 0
             except Exception as e:

@@ -45,6 +45,7 @@ import java.util.concurrent.Executors;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileReader;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import java.io.DataOutputStream;
