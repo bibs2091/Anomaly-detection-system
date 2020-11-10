@@ -66,16 +66,16 @@ class model:
         #in case of one row prediction
         if (self.prediction.shape[0] == 1 ):
             if (self.prediction.item() == 1):
-                print(self.number_to_label[self.attack_model.predict(self.data[0,:].reshape(1, -1)).item()])
+                return (self.number_to_label[self.attack_model.predict(self.data[0,:].reshape(1, -1)).item()])
             else:
-                print(0)
+                return (0)
                 
         else:
             for i in range(self.prediction.shape[0]):
                 if (self.prediction[i] == 1):
-                    print(self.number_to_label[self.attack_model.predict(self.data[i,:].reshape(1, -1)).item()])
+                    return (self.number_to_label[self.attack_model.predict(self.data[i,:].reshape(1, -1)).item()])
                 else:
-                    print(0)
+                    return (0)
 
     def accuracy(self):
         #calculate accuracy in case of label availaiblity

@@ -216,9 +216,6 @@
         $.post('/reset_traffic');
       }
     });
-    socket.on('disconnect', function() {
-      socket.socket.reconnect();
-    })
     var status = '{{ status }}'; 
     if (status=='off'){
       $('#ss1').visible();

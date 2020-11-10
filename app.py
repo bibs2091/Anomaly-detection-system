@@ -5,7 +5,8 @@ from pwn import process
 import json
 
 status = 'off'
-
+#if data reset
+reset = 0
 # Subtract and return  0 if negative 
 def Subtract_Unless_0(data):
     for i in data.keys():
@@ -90,6 +91,8 @@ def create_app(test_config=None):
     @app.route('/reset_traffic',methods=['POST'])
     def reset_traffic():
         global data
+        global reset
+        reset += 1
     # init attacks percentages 
         print("Data reset!")
         data = {
@@ -110,6 +113,16 @@ def create_app(test_config=None):
         f.close()
         return jsonify(status="success")
     
+    @app.route('/post-predict',methods=['POST'])
+    def postpredict():
+        global data
+        received = request.get_json() 
+        print("Data received!")
+        data.clear()
+        data = received
+        print(data)
+        return "1"
+    
     # socketio events
     @socketio.on('connect')
     def test_connect():
@@ -126,18 +139,11 @@ def create_app(test_config=None):
         global req
         global data
         req = True
-
         while req:
             try:
                 #get the results
-                results = model_server.recvline().decode()
-                #processing data and modfying it
-                #depending on results
-                data = data_processing(data,results)
-                print(results)
-                print(data)
                 emit('predection', {'result': data})
-                # socketio.sleep(1)
+                socketio.sleep(3)
             except:
                 pass
 

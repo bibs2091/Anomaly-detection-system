@@ -1,7 +1,14 @@
 #!/usr/bin/env python
 import socket
 from model import model
-
+import requests
+predicted_results = {
+    "Bot":0,
+    "DoS attack":0,
+    "Brute Force":0,
+    "DDoS attacks":0,
+    "0":0
+    }
 m = model()
 
 #check for unwanted bytes and remove them
@@ -14,9 +21,19 @@ def check_flow_return_string(recv):
             data += chr(i)
     return data
 
+def data_processing(data,results):
+    #data = Subtract_Unless_0(data)
+    if results == "exit":
+        quit()
+    else:
+        for label in data:
+            if label in results:
+                data[label] = data[label] + 1
+                break
+    return data
 
 def server_program():
-    
+    global predicted_results
     host = "localhost"
     port = 5000 
 
@@ -42,7 +59,11 @@ def server_program():
         if (count == 10):
             try:
                 m.load_data(data) #concat into one string
-                m.predict()
+                results = m.predict()
+                print(results)
+                predicted_results = data_processing(predicted_results,str(results))
+                print(predicted_results)
+                requests.post('http://127.0.0.1:7777/post-predict',json=predicted_results)
                 data = '' #clear list
                 count = 0
             except Exception as e:
