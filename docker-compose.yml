@@ -1,0 +1,21 @@
+version: "3"
+services:
+  model:
+    build:
+      context: ./model
+      dockerfile: ./Dockerfile
+    ports:
+      - "5000:5000"
+      - "7777:7777"
+    restart: always
+    network_mode: "host"
+
+
+  cicflowmetter:    
+    build: 
+      context: ./CICFlowMeter-master
+      dockerfile: ./Dockerfile
+    ports: 
+      - "25333:25333"
+    restart: always
+    network_mode: "host"
