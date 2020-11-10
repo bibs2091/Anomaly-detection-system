@@ -216,10 +216,9 @@
         $.post('/reset_traffic');
       }
     });
-    /*
-    socket.on('disconnect', function(res) {
+    socket.on('disconnect', function() {
       socket.socket.reconnect();
-    });*/
+    })
     var status = '{{ status }}'; 
     if (status=='off'){
       $('#ss1').visible();
@@ -227,12 +226,7 @@
     }else {
       $('#ss1').invisible();
       $('#ss2').visible();
-      $.post('/stop');
-      socket.emit('stop_predection');
-      sleep(1000).then(() => {
-        $.post('/start');
-        socket.emit('request_predection');
-      }); 
+      socket.emit('request_predection');
     }
     async function scan(e) {
       $(e).toggleClass('btntoscan scanning');
