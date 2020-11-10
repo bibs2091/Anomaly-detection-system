@@ -107,11 +107,13 @@ def create_app(test_config=None):
     
     @app.route('/update_settings',methods=['GET','POST'])
     def update_settings():
+        global config
         data = request.get_json()
         f = open('config.json','w')
         print(data)
         json.dump(data,f)
         f.close()
+        config = data
         return jsonify(status="success")
     
     @app.route('/post-predict',methods=['POST'])
