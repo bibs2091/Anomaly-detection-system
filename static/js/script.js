@@ -114,13 +114,6 @@ async function scan(e) {
                   "DDoS attacks" : `distributed denial-of-service attack, the incoming traffic flooding the victim originates from many different sources. 
                                     This effectively makes it impossible to stop the attack simply by blocking a single source.`,
   }
-  $("#levelofthreat").val(levelofthreat);
-  $("#resetlevel").val(resetlevel);
-  if (autostart_toggle==0){
-    $('#autostart-toggle').prop("checked", false);
-  }else{
-    $('#autostart-toggle').prop("checked", true);
-  }
   var socket = io();
   socket.on('predection', function(res) {
     console.log('got the result:',res);

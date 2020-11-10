@@ -44,7 +44,7 @@ def create_app(test_config=None):
 
     req = False
     # start model_server
-    #model_server = process('./server.py')
+    model_server = process('./server.py')
     # init javagetway 
     geteway = JavaGateway()
     app_get = geteway.entry_point
