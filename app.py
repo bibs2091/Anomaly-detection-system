@@ -42,7 +42,7 @@ def create_app(test_config=None):
 
     req = False
     # start model_server
-    #model_server = process('./server.py')
+    model_server = process('./server.py')
     # init javagetway 
     geteway = JavaGateway()
     app_get = geteway.entry_point
@@ -123,12 +123,10 @@ def create_app(test_config=None):
         delta = reset*int(config['reset-level'])
         print("Data received!")
         for key in received:
-            if int(received[key]) > delta:
-                print("CONTINUE")
-                print("Received->",received)
-                print("Data->",data)
-                continue
-            data[key] = received[key] - delta
+            data[key] = received[key]
+        if reset>0:
+              for key in data:
+                  data[key] = data[key] % int(config['reset-level'])
         #data.clear()
         #data = received
         print(data)
