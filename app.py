@@ -30,6 +30,7 @@ def create_app(test_config=None):
     global model_server
     global req
     global data
+    global config
     # init attacks percentages 
     data = {
     "Bot":0,
@@ -48,14 +49,14 @@ def create_app(test_config=None):
     # init flask up
     app = Flask(__name__, instance_relative_config=True)
     socketio = SocketIO(app, logger=True)
-
+    f = open('config.json','r')
+    config = json.load(f)
 
     @app.route('/',)
     def index():
         global status
         global app_get
-        f = open('config.json','r')
-        config = json.load(f)
+        global config
         if config['auto-start']==1:
             status = 'on'
             print("Starting IDS")
@@ -106,20 +107,30 @@ def create_app(test_config=None):
     
     @app.route('/update_settings',methods=['GET','POST'])
     def update_settings():
+        global config
         data = request.get_json()
         f = open('config.json','w')
         print(data)
         json.dump(data,f)
         f.close()
+        config = data
         return jsonify(status="success")
     
     @app.route('/post-predict',methods=['POST'])
     def postpredict():
         global data
+        global reset
+        global config
         received = request.get_json() 
+        delta = reset*int(config['reset-level'])
         print("Data received!")
-        data.clear()
-        data = received
+        for key in received:
+            data[key] = received[key]
+        if reset>0:
+              for key in data:
+                  data[key] = data[key] % int(config['reset-level'])
+        #data.clear()
+        #data = received
         print(data)
         return "1"
     

@@ -23,13 +23,14 @@ def check_flow_return_string(recv):
 
 def data_processing(data,results):
     #data = Subtract_Unless_0(data)
-    if results == "exit":
+    if results[-1] == "exit":
         quit()
     else:
         for label in data:
-            if label in results:
-                data[label] = data[label] + 1
-                break
+            for res in results:
+                if label in str(res):
+                    data[label] = data[label] + 1
+                    
     return data
 
 def server_program():
@@ -61,7 +62,7 @@ def server_program():
                 m.load_data(data) #concat into one string
                 results = m.predict()
                 print(results)
-                predicted_results = data_processing(predicted_results,str(results))
+                predicted_results = data_processing(predicted_results,results)
                 print(predicted_results)
                 requests.post('http://127.0.0.1:7777/post-predict',json=predicted_results)
                 data = '' #clear list
